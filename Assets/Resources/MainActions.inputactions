@@ -1,0 +1,54 @@
+{
+    "name": "MainActions",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "6faa7fed-0a22-4824-af4a-57fa5dd73a19",
+            "actions": [
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "ac8e7a8f-19cf-437f-b34b-fcec699cc204",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Delta",
+                    "type": "Value",
+                    "id": "9dfa2dc0-759d-41fa-bbad-866c509e02c8",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a377bb1d-5f93-42c7-ad52-985bbf5a5be2",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bdf16ba9-d04d-46da-9045-2ae0e667450d",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Delta",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
