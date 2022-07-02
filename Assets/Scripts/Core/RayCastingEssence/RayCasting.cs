@@ -79,6 +79,30 @@ namespace Core.RayCastingEssence
             return components.ToArray();
         }
 
+        public bool Cast(ref RaycastHit hit)
+        {
+            RaycastHit[] hits = Physics.RaycastAll(_camera.ScreenPointToRay(_input.MousePosition));
+            if (hits.Length > 1)
+            {
+                hit = hits[0];
+                return true;
+            }
+
+            return false;
+        }
+        
+        public bool Cast(ref RaycastHit hit, int layers)
+        {
+            RaycastHit[] hits = Physics.RaycastAll(_camera.ScreenPointToRay(_input.MousePosition), 10, layers);
+            if (hits.Length > 1)
+            {
+                hit = hits[0];
+                return true;
+            }
+
+            return false;
+        }
+
         private void OnCastEnd(InputAction.CallbackContext ctx)
         {
             _stash?.ForEach((target => target.OnEndClick?.Invoke()));
