@@ -9,7 +9,7 @@ namespace PlayerEssence.ToolsEssence
 
         public Tool Current { get; private set; }
 
-        private void Start()
+        public void Init()
         {
             Current = _tools[0];
             foreach (var tool in _tools)
@@ -18,6 +18,14 @@ namespace PlayerEssence.ToolsEssence
             }
 
             OnSelectedTools(_tools[0]);
+        }
+        
+        public void TurnOff()
+        {
+            foreach (var tool in _tools)
+            {
+                tool.OnSelected -= OnSelectedTools;
+            }
         }
 
         private void OnSelectedTools(Tool tool)

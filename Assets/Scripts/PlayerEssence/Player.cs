@@ -4,6 +4,7 @@ using Core.RayCastingEssence;
 using PlayerEssence.ToolsEssence;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Timeline;
 using UnityEngine.UI;
 using Zenject;
 
@@ -21,6 +22,12 @@ namespace PlayerEssence
         private float _maxAngle;
         private float _startRotateAngle;
         private bool _pressing;
+        private bool _isWorking = true;
+
+        public void TurnOffControl()
+        {
+            _isWorking = false;
+        }
 
         private void Awake()
         {
@@ -52,16 +59,18 @@ namespace PlayerEssence
 
         private void Update()
         {
-            Vector3 direction = Camera.main.ScreenPointToRay(_input.MousePosition).direction.normalized;
-            float rot = Mathf.Abs(RotateAngle()) > _maxAngle ? 1 : 0;
-            float rotVel = RotateAngle() > 0 ? -1 : 1;
-            transform.Rotate(new Vector3(0, rot*rotVel*Time.deltaTime*50, 0));
-            Vector3 rotation = transform.localEulerAngles;
-            if (rotation.y > _startRotateAngle + _maxRotateAngle) rotation.y = _startRotateAngle + _maxRotateAngle;
-            if (rotation.y < _startRotateAngle - _maxRotateAngle) rotation.y = _startRotateAngle - _maxRotateAngle;
-            transform.localRotation = Quaternion.Euler(rotation);
-            
-            _tools.Pressing(_pressing, transform.position+direction);
+            if(_isWorking){
+                Vector3 direction = Camera.main.ScreenPointToRay(_input.MousePosition).direction.normalized;
+                float rot = Mathf.Abs(RotateAngle()) > _maxAngle ? 1 : 0;
+                float rotVel = RotateAngle() > 0 ? -1 : 1;
+                transform.Rotate(new Vector3(0, rot * rotVel * Time.deltaTime * 50, 0));
+                Vector3 rotation = transform.localEulerAngles;
+                if (rotation.y > _startRotateAngle + _maxRotateAngle) rotation.y = _startRotateAngle + _maxRotateAngle;
+                if (rotation.y < _startRotateAngle - _maxRotateAngle) rotation.y = _startRotateAngle - _maxRotateAngle;
+                transform.localRotation = Quaternion.Euler(rotation);
+
+                _tools.Pressing(_pressing, transform.position + direction);
+            }
         }
 
         private float RotateAngle()

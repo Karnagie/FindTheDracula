@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace VampireEssence
 {
@@ -11,6 +12,8 @@ namespace VampireEssence
         private static readonly int Died = Animator.StringToHash("Died");
 
         public Vector3 Heart => _heart.position;
+
+        public Action OnKill;
 
         public void Burn()
         {
@@ -26,6 +29,7 @@ namespace VampireEssence
         {
             foreach (var animator in _animators)    
             {
+                OnKill?.Invoke();
                 animator.SetBool(Died, true);   
             }
         }

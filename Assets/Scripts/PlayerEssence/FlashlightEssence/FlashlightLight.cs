@@ -17,6 +17,8 @@ namespace PlayerEssence.FlashlightEssence
         private Vector3 _defaultScale;
         private Vector3 _defaultPosition;
 
+        private bool _isWorking;
+
         private void Awake()
         {
             _defaultScale = transform.localScale;
@@ -40,7 +42,7 @@ namespace PlayerEssence.FlashlightEssence
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out Vampire vampire))
+            if (other.TryGetComponent(out Vampire vampire) && _isWorking)
             {
                 vampire.Burn();
                 _cache.Add(vampire);
@@ -49,7 +51,7 @@ namespace PlayerEssence.FlashlightEssence
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.TryGetComponent(out Vampire vampire))
+            if (other.TryGetComponent(out Vampire vampire) && _isWorking)
             {
                 vampire.StopBurning();
                 _cache.Remove(vampire);
@@ -64,11 +66,13 @@ namespace PlayerEssence.FlashlightEssence
                 vampire.StopBurning();
             }
             _cache.Clear();
+            _isWorking = false;
         }
 
         public void TurnOn()
         {
             gameObject.SetActive(true);
+            _isWorking = true;
         }
     }
 }
