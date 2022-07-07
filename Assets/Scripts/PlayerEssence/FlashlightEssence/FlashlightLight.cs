@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using AliveEssence;
 using Core.RayCastingEssence;
 using UnityEngine;
-using VampireEssence;
 using Zenject;
 
 namespace PlayerEssence.FlashlightEssence

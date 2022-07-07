@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
+using AliveEssence;
 using Core.BusEvents;
 using Core.BusEvents.Handlers;
+using PlayerEssence;
+using UI;
 using UnityEngine;
 using UnityEngine.Playables;
-using UnityEngine.Timeline;
-using VampireEssence;
+using Zenject;
 
 namespace GameEssence
 {
@@ -14,9 +16,11 @@ namespace GameEssence
         [SerializeField] private PlayableDirector _timeline;
         [SerializeField] private PlayableDirector _toPuzzle;
         [SerializeField] private PlayableDirector _win;
-        
+
         private Vampire[] _vampires;
         private int _kills;
+
+        [Inject] private Player _player;
 
         private void Awake()
         {
@@ -37,7 +41,8 @@ namespace GameEssence
             _kills++;
             if (_kills == _vampires.Length)
             {
-                await Task.Delay(2000);
+                await Task.Delay(1000);
+                await _player.ReturnToPosition();
                 GoToPuzzle();
             }
         }

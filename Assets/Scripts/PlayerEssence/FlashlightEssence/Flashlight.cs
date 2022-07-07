@@ -1,4 +1,5 @@
-﻿using Core.InputEssence;
+﻿using System;
+using Core.InputEssence;
 using Core.RayCastingEssence;
 using PlayerEssence.ToolsEssence;
 using UnityEngine;
@@ -11,6 +12,11 @@ namespace PlayerEssence.FlashlightEssence
         [SerializeField] private FlashlightLight _light;
         
         [Inject] private IInputSystem _input;
+
+        private void Start()
+        {
+            _light.TurnOff();
+        }
 
         public override void Return()
         {

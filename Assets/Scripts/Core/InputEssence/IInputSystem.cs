@@ -8,6 +8,7 @@ namespace Core.InputEssence
     {
         Action<InputAction.CallbackContext> OnStartClick { get; set; }
         Action<InputAction.CallbackContext> OnEndClick { get; set; }
+        Action<InputAction.CallbackContext> OnTap { get; set; }
         
         Vector3 MousePosition { get; }
         

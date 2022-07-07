@@ -10,6 +10,7 @@ namespace PuzzleEssence
         protected void Solve()
         {
             OnSolved?.Invoke();
+            OnSolved = null;
         }
     }
 }
