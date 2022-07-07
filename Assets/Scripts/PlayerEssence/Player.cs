@@ -37,6 +37,11 @@ namespace PlayerEssence
         {
             _isWorking = true;
         }
+        
+        public void TurnOffUI()
+        {
+            _tools.TurnOff();
+        }
 
         private void Awake()
         {

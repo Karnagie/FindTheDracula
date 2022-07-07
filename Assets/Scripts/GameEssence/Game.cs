@@ -69,6 +69,7 @@ namespace GameEssence
         public void LoseLevel()
         {
             _player.TurnOffControl();
+            _player.TurnOffUI();
             _losePanel.Show();
         }
     }
