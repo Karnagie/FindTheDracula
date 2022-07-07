@@ -17,6 +17,7 @@ namespace UI.SequenceEssence
             
             foreach (var animation in _animations)
             {
+                await Task.Delay((int) (_delay * 1000));
                 animation.Animate();
                 await Task.Delay((int) (_delay * 1000));
             }
