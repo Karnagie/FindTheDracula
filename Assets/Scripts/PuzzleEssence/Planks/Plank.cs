@@ -13,6 +13,7 @@ namespace PuzzleEssence.Planks
 
         public void Break()
         {
+            if(_isBroken) return;
             transform.DOScale(0, _breakSpeed);
             _isBroken = true;
         }

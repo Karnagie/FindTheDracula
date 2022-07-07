@@ -13,11 +13,13 @@ namespace Core.InputEssence
             _actions = new MainActions();
             _actions.Player.Click.started += (ctx => OnStartClick?.Invoke(ctx));
             _actions.Player.Click.canceled += (ctx => OnEndClick?.Invoke(ctx));
+            _actions.Player.Tap.performed += (ctx => OnTap?.Invoke(ctx));
             _actions.Enable();
         }
         
         public Action<InputAction.CallbackContext> OnStartClick { get;  set; }
         public Action<InputAction.CallbackContext> OnEndClick { get;  set; }
+        public Action<InputAction.CallbackContext> OnTap { get;  set; }
 
         public Vector3 MousePosition => Mouse.current.position.ReadUnprocessedValue();
 

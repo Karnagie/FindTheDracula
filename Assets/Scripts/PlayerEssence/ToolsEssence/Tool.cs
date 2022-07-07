@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace PlayerEssence.ToolsEssence
 {
@@ -18,6 +19,13 @@ namespace PlayerEssence.ToolsEssence
             _defaultParent = transform.parent;
             _view.Init(this);
             _view.OnSelected += OnSelected;
+        }
+
+        public void ResetUI(Transform rotator, Button buttonOnPanel, Transform placeOnUI,  Transform placeDefaultInHand)
+        {
+            _rotator = rotator;
+            _defaultParent = transform.parent;
+            _view.UpdateView(buttonOnPanel, placeOnUI, placeDefaultInHand);
         }
 
         public virtual void Return()

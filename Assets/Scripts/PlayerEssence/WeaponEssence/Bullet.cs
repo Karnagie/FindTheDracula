@@ -1,16 +1,16 @@
-﻿using DG.Tweening;
+﻿using AliveEssence;
+using DG.Tweening;
 using UnityEngine;
-using VampireEssence;
 
 namespace PlayerEssence.WeaponEssence
 {
     public class Bullet : MonoBehaviour
     {
-        public void MoveTo(Vampire vampire)
+        public void MoveTo(AliveObject aliveObject)
         {
-            transform.DOMove(vampire.Heart, 0.2f).OnComplete((() =>
+            transform.DOMove(aliveObject.Heart, 0.2f).OnComplete((() =>
             {
-                vampire.Die();
+                aliveObject.Die();
                 Destroy(gameObject);
             }));
         }

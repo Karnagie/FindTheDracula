@@ -13,6 +13,7 @@ namespace PlayerEssence.ToolsEssence
         [SerializeField] private Transform _placeDefaultInHand;
         [SerializeField] private Vector3 _scaleInHand;
         [SerializeField] private Vector3 _scaleOnUI;
+        [SerializeField] private Vector3 _rotationOnUI;
         
         private Tool _tool;
         private Vector3 _defaultRotation;
@@ -22,12 +23,22 @@ namespace PlayerEssence.ToolsEssence
         private void Awake()
         {
             _defaultRotation = transform.localRotation.eulerAngles;
+            transform.localRotation = Quaternion.Euler(_rotationOnUI);
+        }
+
+        public void UpdateView(Button buttonOnPanel, Transform placeOnUI,  Transform placeDefaultInHand)
+        {
+            _buttonOnPanel = buttonOnPanel;
+            _placeOnUI = placeOnUI;
+            _placeDefaultInHand = placeDefaultInHand;
+            _buttonOnPanel?.onClick.RemoveListener(OnClick);
+            _buttonOnPanel?.onClick.AddListener(OnClick);
         }
 
         public void Init(Tool tool)
         {
             _tool = tool;
-            _buttonOnPanel.onClick.AddListener(OnClick);
+            _buttonOnPanel?.onClick.AddListener(OnClick);
         }
 
         private void OnDestroy()
@@ -44,7 +55,7 @@ namespace PlayerEssence.ToolsEssence
         {
             transform.DOKill(false);
             transform.DOLocalMove(_placeOnUI.localPosition, 1);
-            transform.DOLocalRotate(_defaultRotation, 0.2f);
+            transform.DOLocalRotate(_rotationOnUI, 1f);
             transform.DOScale(_scaleOnUI, 1);
         }
 

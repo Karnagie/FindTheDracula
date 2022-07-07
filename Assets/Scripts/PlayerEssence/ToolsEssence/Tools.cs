@@ -1,16 +1,25 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace PlayerEssence.ToolsEssence
 {
     public class Tools : MonoBehaviour
     {
-        [SerializeField] private Tool[] _tools;
+        [SerializeField] private Transform _rotator;
+        [SerializeField] private Button _buttonOnPanel;
+        [SerializeField] private Transform _placeOnUI;
+        [SerializeField] private Transform _placeDefaultInHand;
+        
+        [SerializeField] private Transform _weaponParent;
+        [SerializeField] private List<Tool> _tools;
 
         public Tool Current { get; private set; }
 
         public void Init()
         {
+            _weaponParent = transform;
             Current = _tools[0];
             foreach (var tool in _tools)
             {
@@ -18,6 +27,16 @@ namespace PlayerEssence.ToolsEssence
             }
 
             OnSelectedTools(_tools[0]);
+        }
+
+        public void AddWeapon(Tool newTool)
+        {
+            newTool.OnSelected += OnSelectedTools;
+            Vector3 position = newTool.transform.position;
+            newTool.transform.SetParent(_weaponParent, _weaponParent);
+            newTool.transform.localPosition = position;
+            newTool.ResetUI(_rotator, _buttonOnPanel, _placeOnUI, _placeDefaultInHand);
+            _tools.Add(newTool);
         }
         
         public void TurnOff()
@@ -30,18 +49,9 @@ namespace PlayerEssence.ToolsEssence
 
         private void OnSelectedTools(Tool tool)
         {
-            foreach (var tool1 in _tools)
-            {
-                if (tool1 != tool)
-                {
-                    tool1.Return();
-                }
-                else
-                {
-                    Current = tool1;
-                    tool1.GetInHand();
-                }
-            }
+            Current.Return();
+            Current = tool;
+            Current.GetInHand();
         }
 
         public void OnClick(Vector3 direction)

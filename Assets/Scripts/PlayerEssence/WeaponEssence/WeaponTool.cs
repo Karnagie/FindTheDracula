@@ -1,9 +1,9 @@
-﻿using Core.InputEssence;
+﻿using AliveEssence;
+using Core.InputEssence;
 using Core.RayCastingEssence;
 using PlayerEssence.ToolsEssence;
 using Unity.Mathematics;
 using UnityEngine;
-using VampireEssence;
 using Zenject;
 
 namespace PlayerEssence.WeaponEssence
@@ -16,7 +16,7 @@ namespace PlayerEssence.WeaponEssence
         [Inject] private IInputSystem _input;
         [Inject] private RayCasting _rayCasting;
 
-        private void CreateBullet(Vampire mVampire)
+        private void CreateBullet(AliveObject mVampire)
         {
             Bullet bullet = Instantiate(_bulletPrefab, _startBulletPosition.position,
                 quaternion.identity);
@@ -45,12 +45,12 @@ namespace PlayerEssence.WeaponEssence
             else
                 transform.LookAt(camDirection.direction*10);
             
-            Vampire[] vampires = _rayCasting.CastAll<Vampire>();
-            if (vampires.Length >= 1)
+            AliveObject[] aliveObjects = _rayCasting.CastAll<AliveObject>();
+            if (aliveObjects.Length >= 1)
             {
-                foreach (var vampire in vampires)
+                foreach (var aliveObject in aliveObjects)
                 {
-                    CreateBullet(vampire);
+                    CreateBullet(aliveObject);
                 }
             }
         }

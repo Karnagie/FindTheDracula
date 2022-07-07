@@ -23,11 +23,15 @@ namespace Core.AnimationEssence
 
         private void OnValidate()
         {
-            if(_mainRoot == null) return;
+            if(_mainRoot == null && _pairs.Count > 0) return;
+            
+            _mainChilds = new List<Transform>();
+            _childs = new List<Transform>();
             
             AddChildren(transform);
             AddMainChildren(_mainRoot);
 
+            _pairs = new List<TransformPair>();
             for (int i = 0; i < _mainChilds.Count; i++)
             {
                 _pairs.Add(new TransformPair(_mainChilds[i], _childs[i]));
@@ -47,7 +51,7 @@ namespace Core.AnimationEssence
         {
             foreach (Transform child in parent)
             {
-                _mainChilds.Add(child);   
+                _mainChilds.Add(child);
                 AddMainChildren(child);
             }
         }
