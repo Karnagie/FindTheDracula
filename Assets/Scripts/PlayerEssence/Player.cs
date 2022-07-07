@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Core.AnimationEssence;
 using Core.InputEssence;
 using Core.RayCastingEssence;
 using DG.Tweening;
@@ -13,9 +14,11 @@ namespace PlayerEssence
 {
     public class Player : MonoBehaviour
     {
+        [SerializeField] private Transform _startPosition;
         [SerializeField] private Vector2 _rectSize;
         [SerializeField] private float _maxRotateAngle;
         [SerializeField] private Tools _tools;
+        [SerializeField] private bool _isWorking;
 
         [Inject] private IInputSystem _input;
         [Inject] private RayCasting _rayCasting;
@@ -24,11 +27,15 @@ namespace PlayerEssence
         private float _maxAngle;
         private float _startRotateAngle;
         private bool _pressing;
-        private bool _isWorking = true;
 
         public void TurnOffControl()
         {
             _isWorking = false;
+        }
+        
+        public void TurnOnControl()
+        {
+            _isWorking = true;
         }
 
         private void Awake()
@@ -41,10 +48,16 @@ namespace PlayerEssence
             _startRotateAngle = transform.localEulerAngles.y;
         }
 
+        private void Start()
+        {
+            transform.position = _startPosition.position;
+            transform.rotation = _startPosition.rotation;
+        }
+
         private void OnTap(InputAction.CallbackContext obj)
         {
             Vector3 direction = Camera.main.ScreenPointToRay(_input.MousePosition).direction.normalized;
-            if (_rayCasting.CastAll<ToolButton>().Length == 0) _tools.OnClick(transform.position + direction);
+            if (_rayCasting.CastAll<ToolButton>().Length == 0 && _isWorking && _input.MousePosition.y > (Screen.height / 4)) _tools.OnClick(transform.position + direction);
         }
 
         private void OnStartClick(InputAction.CallbackContext obj)

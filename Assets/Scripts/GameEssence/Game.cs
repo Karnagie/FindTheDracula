@@ -17,6 +17,8 @@ namespace GameEssence
         [SerializeField] private PlayableDirector _toPuzzle;
         [SerializeField] private PlayableDirector _win;
 
+        [SerializeField] private WinPanel _losePanel;
+
         private Vampire[] _vampires;
         private int _kills;
 
@@ -34,6 +36,11 @@ namespace GameEssence
             {
                 vampire.OnKill += OnVampireKill;
             }
+        }
+
+        public void StartLevel()
+        {
+            _timeline.Play();
         }
 
         private async void OnVampireKill()
@@ -57,6 +64,12 @@ namespace GameEssence
         {
             _toPuzzle.Stop(); 
             _win.Play();
+        }
+
+        public void LoseLevel()
+        {
+            _player.TurnOffControl();
+            _losePanel.Show();
         }
     }
 }
