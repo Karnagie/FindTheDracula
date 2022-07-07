@@ -33,6 +33,7 @@ namespace PlayerEssence
             _isWorking = false;
         }
         
+        [ContextMenu("Turn on control")]
         public void TurnOnControl()
         {
             _isWorking = true;
