@@ -36,6 +36,8 @@ namespace PlayerEssence
         [ContextMenu("Turn on control")]
         public void TurnOnControl()
         {
+            _tools.AddWeapon(_inventory.GetCurrent());
+            
             _isWorking = true;
         }
         
@@ -46,7 +48,6 @@ namespace PlayerEssence
 
         private void Awake()
         {
-            _tools.AddWeapon(_inventory.GetCurrent());
             _input.OnStartClick += OnStartClick;
             _input.OnTap += OnTap;
             _input.OnEndClick += OnEndClick;

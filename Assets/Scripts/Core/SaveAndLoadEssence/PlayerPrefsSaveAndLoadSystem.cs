@@ -20,5 +20,20 @@ namespace Core.SaveAndLoadEssence
         {
             PlayerPrefs.SetInt($"Weapon_{index}", 1);
         }
+
+        public void AddOpenPercents(int index, float value)
+        {
+            float newValue = PlayerPrefs.GetFloat($"Weapon_{index}_opening", 0) + value;
+            Debug.Log($"Weapon_{index}_opening {newValue}");
+            PlayerPrefs.SetFloat($"Weapon_{index}_opening", newValue);
+            PlayerPrefs.SetInt($"Weapon_CurrentOpening", index);
+            
+            if (newValue >= 1) PlayerPrefs.SetInt($"Weapon_{index}", 1);
+        }
+
+        public int GetCurrentOpening()
+        {
+            return PlayerPrefs.GetInt($"Weapon_CurrentOpening", -1);
+        }
     }
 }

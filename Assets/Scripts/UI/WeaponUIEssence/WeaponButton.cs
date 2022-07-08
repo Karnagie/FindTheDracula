@@ -33,7 +33,9 @@ namespace UI.WeaponUIEssence
         private void OnClick()
         {
             if (_saveAndLoad.IsOpenedWeapon(_index))
+            {
                 _shower.Change(_index);
+            }
         }
 
         public void Lock()

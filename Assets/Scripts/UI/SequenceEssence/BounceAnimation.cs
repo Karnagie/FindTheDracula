@@ -31,7 +31,7 @@ namespace UI.SequenceEssence
 
         public override void Animate()
         {
-            transform.DORewind ();
+            //transform.DORewind ();
             transform.DOPunchScale (new Vector3 (1, 1, 1), .1f);
             GetComponent<Image>()?.DOFade(1, 0.1f);
             GetComponent<TMP_Text>()?.DOFade(1, 0.1f);

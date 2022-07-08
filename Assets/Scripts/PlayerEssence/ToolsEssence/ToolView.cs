@@ -47,7 +47,7 @@ namespace PlayerEssence.ToolsEssence
 
         private void OnDestroy()
         {
-            _buttonOnPanel.onClick.RemoveListener(OnClick);
+            _buttonOnPanel?.onClick.RemoveListener(OnClick);
         }
         
         private void OnClick()

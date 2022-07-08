@@ -22,7 +22,7 @@ namespace PlayerEssence.ToolsEssence
 
         public void Init()
         {
-            _weaponParent = transform;
+            //_weaponParent = transform;
             Current = _tools[0];
             foreach (var tool in _tools)
             {
@@ -38,7 +38,7 @@ namespace PlayerEssence.ToolsEssence
         {
             newTool.OnSelected += OnSelectedTools;
             Vector3 position = newTool.transform.position;
-            newTool.transform.SetParent(_weaponParent, _weaponParent);
+            newTool.SetParent(_weaponParent);
             newTool.transform.localPosition = position;
             newTool.ResetUI(_rotator, _buttonOnPanel, _placeOnUI, _placeDefaultInHand);
             newTool.Return();
