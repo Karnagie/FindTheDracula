@@ -1,5 +1,6 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 guid: aebd7ef925dd4fe4690c3238e879f914
 folderAsset: yes
 =======
@@ -10,6 +11,10 @@ guid: b9e3a123d65038041a9d952cdfd39b63
 folderAsset: yes
 >>>>>>> level-3:Assets/Scenes/Level3.meta
 >>>>>>> main
+=======
+guid: aebd7ef925dd4fe4690c3238e879f914
+folderAsset: yes
+>>>>>>> level-4
 DefaultImporter:
   externalObjects: {}
   userData: 
