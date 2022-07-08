@@ -55,6 +55,13 @@ namespace PlayerEssence
             _startRotateAngle = transform.localEulerAngles.y;
         }
 
+        private void OnDisable()
+        {
+            _input.OnStartClick -= OnStartClick;
+            _input.OnTap -= OnTap;
+            _input.OnEndClick -= OnEndClick;
+        }
+
         private void Start()
         {
             transform.position = _startPosition.position;
