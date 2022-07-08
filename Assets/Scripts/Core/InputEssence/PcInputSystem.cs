@@ -25,8 +25,10 @@ namespace Core.InputEssence
 
         private Vector3 CalculatePosition()
         {
-            return Touchscreen.current.position.ReadUnprocessedValue();
+            #if UNITY_EDITOR
             return Mouse.current.position.ReadUnprocessedValue();
+            #endif
+            return Touchscreen.current.position.ReadUnprocessedValue();
         }
 
         public Vector2 MouseDelta => _actions.Player.Delta.ReadValue<Vector2>();

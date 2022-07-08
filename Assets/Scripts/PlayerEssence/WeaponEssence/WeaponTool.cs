@@ -32,7 +32,7 @@ namespace PlayerEssence.WeaponEssence
                 transform.LookAt(hit.point);
             }
             else
-                transform.LookAt(camDirection.direction*10);
+                transform.LookAt(transform.position+camDirection.direction);
         }
 
         public override void Click(Vector3 direction)
