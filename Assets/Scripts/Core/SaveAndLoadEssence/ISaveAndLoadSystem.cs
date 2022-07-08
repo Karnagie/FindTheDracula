@@ -4,6 +4,7 @@
     {
         int GetCurrentWeaponId { get;}
         int NextLevel { get;}
+        bool Tutorial { get;}
         void ChangeCurrentWeapon(int id);
         bool IsOpenedWeapon(int index);
         void OpenWeapon(int index);

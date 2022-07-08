@@ -7,14 +7,30 @@ namespace Core.SaveAndLoadEssence
     {
         public int GetCurrentWeaponId => PlayerPrefs.GetInt("CurrentWeapon", 0);
         public int NextLevel => CalculateNextLevel();
+        public bool Tutorial => GetTutorial();
+
+        private bool GetTutorial()
+        {
+            if (PlayerPrefs.GetInt("Tutorial", 0) == 0)
+            {
+                PlayerPrefs.SetInt("Tutorial", 1);
+                return true;
+            }
+
+            return false;
+        }
+
+        private int _openingId;
 
         private int CalculateNextLevel()
         {
-            int index = PlayerPrefs.GetInt("NextLevel", 1);
-            if (index == SceneManager.GetActiveScene().buildIndex)
-            {
-                index = (index + 1) % 2;
-            }
+            int index = SceneManager.GetActiveScene().buildIndex;//PlayerPrefs.GetInt("NextLevel", 0);
+            index = (index + 1) % 4;
+            // if (index == SceneManager.GetActiveScene().buildIndex)
+            // {
+            //     Debug.Log(index);
+            //     index = (index + 1) % 4;
+            // }
 
             return index;
         }
@@ -40,6 +56,7 @@ namespace Core.SaveAndLoadEssence
             Debug.Log($"Weapon_{index}_opening {newValue}");
             PlayerPrefs.SetFloat($"Weapon_{index}_opening", newValue);
             PlayerPrefs.SetInt($"Weapon_CurrentOpening", index);
+            _openingId = index;
             
             if (newValue >= 1) PlayerPrefs.SetInt($"Weapon_{index}", 1);
         }
@@ -51,7 +68,7 @@ namespace Core.SaveAndLoadEssence
 
         public float FillPercent()
         {
-            return PlayerPrefs.GetFloat($"{GetCurrentWeaponId}", 0);
+            return PlayerPrefs.GetFloat($"Weapon_{_openingId}_opening", 0);
         }
     }
 }

@@ -22,24 +22,13 @@ namespace UI
 
         private void Awake()
         {
-            var count = _saveAndLoad.FillPercent();
-            switch (count)
-            {
-                case 0: 
-                    gameObject.SetActive(false);
-                    break;
-                case -1:
-                    _image.fillAmount = 0;
-                    break;
-                default:
-                    _image.fillAmount = _saveAndLoad.GetCurrentOpening();
-                    break;
-            }
+            
         }
 
         public override void Init()
         {
             if(_image)_image.color = new Color(_image.color.r, _image.color.g, _image.color.b, 0f);
+            _image.fillAmount = 0;
         }
 
         public override async void Animate()
@@ -47,24 +36,37 @@ namespace UI
             try
             {
                 _inventory.AddPercents(_fillAmount);
+                var count = _saveAndLoad.FillPercent();
+                Debug.Log(_saveAndLoad.FillPercent());
+                _image.fillAmount = 0;
+                switch (count)
+                {
+                    case 0: 
+                        _image.fillAmount = 0;
+                        break;
+                    case -1:
+                        _image.fillAmount = 0;
+                        break;
+                }
+                
                 transform.DORewind ();
                 transform.DOPunchScale (new Vector3 (1, 1, 1), .1f);
                 _image.DOFade(1, .25f);
                 float fullFill = _image.fillAmount + _fillAmount;
                 await Task.Delay(500);
-                while (_image.fillAmount <= fullFill)
+                while (_image.fillAmount <= _saveAndLoad.FillPercent() )
                 {
                     _image.fillAmount += _fillSpeed * Time.deltaTime;
                     await Task.Yield();
                 }
-                if(_saveAndLoad.IsOpenedWeapon(_saveAndLoad.GetCurrentOpening()) && _saveAndLoad.GetCurrentOpening() != 0)
+                if(_saveAndLoad.FillPercent() >= 1 && _saveAndLoad.GetCurrentOpening() != 0)
                 {
                     WeaponTool tool = _inventory.Get(_saveAndLoad.GetCurrentOpening());
                     tool.SetParent(transform);
                     tool.transform.localScale = Vector3.one*500;
                     tool.transform.localPosition = Vector3.zero;
                 }
-                _image.fillAmount = fullFill;
+                _image.fillAmount = _saveAndLoad.FillPercent();
             }
             catch (Exception e)
             {
