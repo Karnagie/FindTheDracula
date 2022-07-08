@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Sprites/RedUI.meta
 guid: 8a2f9db50c58c484e8a78853208bf8eb
 folderAsset: yes
+=======
+guid: adba91cd2cd22794895da2b0c398e430
+>>>>>>> level-4:Assets/Plugins/RootMotion/PuppetMaster/_Integration/Invector's Third Person Controller - Basic Locomotion FREE (v 1.0c).unitypackage.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

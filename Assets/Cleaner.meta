@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Cleaner.meta
 guid: a05385385951b67419c2946cbbc69613
 folderAsset: yes
+=======
+guid: 4e10ff754268a154989ce00ebfb15b1a
+>>>>>>> level-4:Assets/Plugins/Zenject/OptionalExtras/ReflectionBaking/Zenject-ReflectionBaking.csproj.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
