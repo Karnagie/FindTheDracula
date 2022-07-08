@@ -1,6 +1,7 @@
 ﻿using System;
 using Core.SaveAndLoadEssence;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 namespace UI.WeaponUIEssence
@@ -8,18 +9,31 @@ namespace UI.WeaponUIEssence
     public class WeaponButton : MonoBehaviour
     {
         [SerializeField] private int _index;
+        [SerializeField] private bool _openedByDefault;
 
         [SerializeField] private GameObject _lock;
         [SerializeField] private GameObject _opened;
+        [SerializeField] private Button _button;
+        [SerializeField] private WeaponShower _shower;
 
         [Inject] private ISaveAndLoadSystem _saveAndLoad;
 
         private void Awake()
         {
+            if (_openedByDefault) _saveAndLoad.OpenWeapon(_index);
+            
             if (_saveAndLoad.IsOpenedWeapon(_index))
                 Open();
             else
                 Lock();
+            
+            _button.onClick.AddListener(OnClick);
+        }
+
+        private void OnClick()
+        {
+            if (_saveAndLoad.IsOpenedWeapon(_index))
+                _shower.Change(_index);
         }
 
         public void Lock()

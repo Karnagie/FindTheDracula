@@ -31,6 +31,7 @@ namespace PlayerEssence.WeaponEssence
                 bullet.transform.position += bullet.transform.forward * scale.y;
                 bullet.transform.localScale = scale;
                 bullet.transform.Rotate(0, -90, -90);
+                bullet.transform.SetParent(transform);
                 StartCoroutine(Destroying(bullet.gameObject));
             }else
                 bullet.MoveTo(mVampire);
