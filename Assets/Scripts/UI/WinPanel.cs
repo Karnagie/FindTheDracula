@@ -19,6 +19,7 @@ namespace UI
 
         public void Show()
         {
+            gameObject.SetActive(true);
             _canvas.alpha = 1;
             _sequence.Play();
         }
