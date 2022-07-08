@@ -41,6 +41,7 @@ namespace PlayerEssence.ToolsEssence
             newTool.transform.SetParent(_weaponParent, _weaponParent);
             newTool.transform.localPosition = position;
             newTool.ResetUI(_rotator, _buttonOnPanel, _placeOnUI, _placeDefaultInHand);
+            newTool.Return();
             _tools.Add(newTool);
         }
         

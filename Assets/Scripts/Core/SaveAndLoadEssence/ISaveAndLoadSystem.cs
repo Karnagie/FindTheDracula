@@ -3,5 +3,7 @@
     public interface ISaveAndLoadSystem
     {
         int GetCurrentWeaponId { get;}
+        void ChangeCurrentWeapon(int id);
+        bool IsOpenedWeapon(int index);
     }
 }

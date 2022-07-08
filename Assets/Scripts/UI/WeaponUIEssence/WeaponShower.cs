@@ -24,6 +24,7 @@ namespace UI.WeaponUIEssence
         {
             Destroy(_current);
             _current = Instantiate(_weapons[id], _parent);
+            _saveAndLoad.ChangeCurrentWeapon(id);
         }
     }
 }

@@ -15,3 +15,5 @@ MonoBehaviour:
   _inventory:
     _weapons:
     - {fileID: 702426169277323309, guid: 999d3185863df9546a19111cccddf83c, type: 3}
+    - {fileID: 6208251366490094284, guid: 6ea6c5cbf48908e4688db1d1f0deacc7, type: 3}
+    - {fileID: 1973373607294164056, guid: 753b8e99bdecc10499f21c1e6537d9fc, type: 3}
