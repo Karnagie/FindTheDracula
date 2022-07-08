@@ -37,7 +37,8 @@ namespace PlayerEssence
         public void TurnOnControl()
         {
             _tools.AddWeapon(_inventory.GetCurrent());
-            
+            CalculateMaxAngle();
+            _startRotateAngle = UnityEditor.TransformUtils.GetInspectorRotation(transform).y;
             _isWorking = true;
         }
         
@@ -51,8 +52,8 @@ namespace PlayerEssence
             _input.OnStartClick += OnStartClick;
             _input.OnTap += OnTap;
             _input.OnEndClick += OnEndClick;
-            CalculateMaxAngle();
-            _startRotateAngle = transform.localEulerAngles.y;
+            //CalculateMaxAngle();
+            //_startRotateAngle = transform.localEulerAngles.y;
         }
 
         private void OnDisable()
@@ -99,7 +100,7 @@ namespace PlayerEssence
                 float rot = Mathf.Abs(RotateAngle()) > _maxAngle ? 1 : 0;
                 float rotVel = RotateAngle() > 0 ? -1 : 1;
                 transform.Rotate(new Vector3(0, rot * rotVel * Time.deltaTime * 50, 0));
-                Vector3 rotation = transform.localEulerAngles;
+                Vector3 rotation = UnityEditor.TransformUtils.GetInspectorRotation(transform);
                 if (rotation.y > _startRotateAngle + _maxRotateAngle) rotation.y = _startRotateAngle + _maxRotateAngle;
                 if (rotation.y < _startRotateAngle - _maxRotateAngle) rotation.y = _startRotateAngle - _maxRotateAngle;
                 transform.localRotation = Quaternion.Euler(rotation);

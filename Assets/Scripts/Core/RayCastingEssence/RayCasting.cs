@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 
 namespace Core.RayCastingEssence
 {
-    public class RayCasting
+    public class RayCasting : IDisposable
     {
         private Camera _camera;
         private List<IRaycastTarget> _stash;
@@ -107,6 +107,15 @@ namespace Core.RayCastingEssence
         {
             _stash?.ForEach((target => target.OnEndClick?.Invoke()));
             _stash = new List<IRaycastTarget>();
+        }
+
+        public void Dispose()
+        {
+            _camera = null;
+            _stash = null;
+            _input.OnEndClick -= OnCastEnd;
+            _input?.Dispose();
+            _input = null;
         }
     }
 }

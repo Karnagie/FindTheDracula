@@ -22,7 +22,7 @@ namespace UI
 
         private void Awake()
         {
-            var count = _saveAndLoad.GetCurrentOpening();
+            var count = _saveAndLoad.FillPercent();
             switch (count)
             {
                 case 0: 

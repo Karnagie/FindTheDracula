@@ -38,6 +38,12 @@ namespace GameEssence
             }
         }
 
+        private void OnDisable()
+        {
+            EventBus.Unsubscribe(this);
+            EventBus.Clear();
+        }
+
         public void StartLevel()
         {
             _timeline.Play();
@@ -48,7 +54,9 @@ namespace GameEssence
             _kills++;
             if (_kills == _vampires.Length)
             {
+                Debug.Log("To wait");
                 await Task.Delay(1000);
+                Debug.Log("To return");
                 await _player.ReturnToPosition();
                 GoToPuzzle();
             }
@@ -57,6 +65,7 @@ namespace GameEssence
         public void GoToPuzzle()
         {
             _timeline.Stop();
+            Debug.Log("To puzzle");
             _toPuzzle.Play();
         }
 

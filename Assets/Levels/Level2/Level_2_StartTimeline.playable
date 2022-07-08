@@ -1,5 +1,29 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5268955525419509740
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a16748d9461eae46a725db9776d5390, type: 3}
+  m_Name: Markers
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips: []
+  m_Markers:
+    m_Objects:
+    - {fileID: 1520033547099902591}
 --- !u!74 &-3766764082976259105
 AnimationClip:
   m_ObjectHideFlags: 0
@@ -55,15 +79,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 1
         value: {x: -0.008416176, y: 0, z: 2.2521038}
-        inSlope: {x: 0, y: 0, z: 0.15966702}
-        outSlope: {x: 0, y: 0, z: 0.15966702}
+        inSlope: {x: 0, y: 0, z: 0.29639047}
+        outSlope: {x: 0, y: 0, z: 0.29639047}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 2.3333333
-        value: {x: 4.3658433, y: 0, z: 2.3445776}
+        value: {x: 3.4246807, y: 0, z: 2.4237633}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -227,7 +251,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 2.3333333
-        value: 4.3658433
+        value: 3.4246807
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -293,15 +317,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 1
         value: 2.2521038
-        inSlope: 0.15966702
-        outSlope: 0.15966702
+        inSlope: 0.29639047
+        outSlope: 0.29639047
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 2.3333333
-        value: 2.3445776
+        value: 2.4237633
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -410,4 +434,20 @@ MonoBehaviour:
     m_Framerate: 60
     m_ScenePreview: 1
   m_DurationMode: 0
-  m_MarkerTrack: {fileID: 0}
+  m_MarkerTrack: {fileID: -5268955525419509740}
+--- !u!114 &1520033547099902591
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
+  m_Name: Signal Emitter
+  m_EditorClassIdentifier: 
+  m_Time: 2.3333333333333335
+  m_Retroactive: 0
+  m_EmitOnce: 0
+  m_Asset: {fileID: 11400000, guid: fe7e3a070ee81df42a1ec2901f0d2a47, type: 2}

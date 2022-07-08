@@ -48,5 +48,10 @@ namespace Core.SaveAndLoadEssence
         {
             return PlayerPrefs.GetInt($"Weapon_CurrentOpening", -1);
         }
+
+        public float FillPercent()
+        {
+            return PlayerPrefs.GetFloat($"{GetCurrentWeaponId}", 0);
+        }
     }
 }

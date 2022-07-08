@@ -9,5 +9,6 @@
         void OpenWeapon(int index);
         void AddOpenPercents(int index, float value);
         int GetCurrentOpening();
+        float FillPercent();
     }
 }
