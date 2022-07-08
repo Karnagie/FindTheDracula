@@ -16,15 +16,21 @@ namespace PlayerEssence.ToolsEssence
 
         protected virtual void Awake()
         {
-            _defaultParent = transform.parent;
+            if(_defaultParent == null)_defaultParent = transform.parent;
             _view.Init(this);
             _view.OnSelected += OnSelected;
+        }
+
+        public void SetParent(Transform parent)
+        {
+            _defaultParent = parent;
+            transform.SetParent(_defaultParent);
         }
 
         public void ResetUI(Transform rotator, Button buttonOnPanel, Transform placeOnUI,  Transform placeDefaultInHand)
         {
             _rotator = rotator;
-            _defaultParent = transform.parent;
+            if(_defaultParent == null)_defaultParent = transform.parent;
             _view.UpdateView(buttonOnPanel, placeOnUI, placeDefaultInHand);
         }
 

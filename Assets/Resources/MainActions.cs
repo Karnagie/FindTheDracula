@@ -70,7 +70,7 @@ public partial class @MainActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d5133d26-02ba-4ff8-94d9-803cb8a3f70b"",
-                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
+                    ""path"": ""<Touchscreen>/Press"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -82,6 +82,17 @@ public partial class @MainActions : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""bdf16ba9-d04d-46da-9045-2ae0e667450d"",
                     ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Delta"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e7e9e9eb-0b31-4220-98a1-4be63be079c8"",
+                    ""path"": ""<Touchscreen>/primaryTouch/delta"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

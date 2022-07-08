@@ -15,5 +15,11 @@ namespace Core.Installers
             Container.BindInterfacesAndSelfTo<WeaponInventory>().FromInstance(_inventory).AsSingle();
             Container.QueueForInject(_inventory);
         }
+
+        [ContextMenu("Reset Saves")]
+        private void ResetSaves()
+        {
+            PlayerPrefs.DeleteAll();
+        }
     }
 }

@@ -6,6 +6,8 @@ Shader "Examples/Stencil"
     }
 	SubShader
     {
+    	UsePass "Universal Render Pipeline/Complex Lit/SHADOWCASTER"
+    	
         Tags 
 		{ 
 			"RenderType" = "Opaque"

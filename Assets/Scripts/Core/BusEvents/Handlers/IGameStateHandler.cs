@@ -4,5 +4,6 @@
     {
         void GoToPuzzle();
         void FinishLevel();
+        void LoseLevel();
     }
 }

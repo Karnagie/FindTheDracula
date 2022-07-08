@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Plugins/RootMotion/PuppetMaster/_Integration/Ootii's Motion Controller v2.73 (Unity 5.5.0).unitypackage.meta
+guid: 2fa4468003e6b5d4a846c84a7a7bd5d2
+=======
 guid: 3d1be88fedc2b9646b51869b68d58086
 folderAsset: yes
+>>>>>>> level-3:Assets/Scenes/Level3/Stove Smoke.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
