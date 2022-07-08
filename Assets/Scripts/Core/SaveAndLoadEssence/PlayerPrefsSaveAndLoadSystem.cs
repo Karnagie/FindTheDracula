@@ -1,11 +1,24 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Core.SaveAndLoadEssence
 {
     public class PlayerPrefsSaveAndLoadSystem : ISaveAndLoadSystem
     {
         public int GetCurrentWeaponId => PlayerPrefs.GetInt("CurrentWeapon", 0);
-        
+        public int NextLevel => CalculateNextLevel();
+
+        private int CalculateNextLevel()
+        {
+            int index = PlayerPrefs.GetInt("NextLevel", 1);
+            if (index == SceneManager.GetActiveScene().buildIndex)
+            {
+                index = (index + 1) % 2;
+            }
+
+            return index;
+        }
+
         public void ChangeCurrentWeapon(int id)
         {
             PlayerPrefs.SetInt("CurrentWeapon", id);
