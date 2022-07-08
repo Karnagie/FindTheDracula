@@ -7,6 +7,9 @@ namespace PlayerEssence.ToolsEssence
 {
     public class Tools : MonoBehaviour
     {
+        [SerializeField] private GameObject _toolsParent;
+        [SerializeField] private GameObject _toolCanvas;
+        
         [SerializeField] private Transform _rotator;
         [SerializeField] private Button _buttonOnPanel;
         [SerializeField] private Transform _placeOnUI;
@@ -26,7 +29,9 @@ namespace PlayerEssence.ToolsEssence
                 tool.OnSelected += OnSelectedTools;
             }
 
-            OnSelectedTools(_tools[0]);
+            //OnSelectedTools(_tools[0]);
+            _toolsParent.SetActive(true);
+            _toolCanvas.SetActive(true);
         }
 
         public void AddWeapon(Tool newTool)
@@ -45,6 +50,9 @@ namespace PlayerEssence.ToolsEssence
             {
                 tool.OnSelected -= OnSelectedTools;
             }
+            
+            _toolsParent.SetActive(false);
+            _toolCanvas.SetActive(false);
         }
 
         private void OnSelectedTools(Tool tool)
@@ -56,6 +64,10 @@ namespace PlayerEssence.ToolsEssence
 
         public void OnClick(Vector3 direction)
         {
+            if (Current == null)
+            {
+                OnSelectedTools(_tools[0]);
+            }
             Current.Click(direction);
         }
 

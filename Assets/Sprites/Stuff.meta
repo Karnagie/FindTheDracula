@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Sprites/Stuff.meta
 guid: b35c69fc1c33162418c32380d3a84e54
 folderAsset: yes
+=======
+guid: ca2aa1acb4cd1db468f7dd7288e78f53
+>>>>>>> level-4:Assets/Plugins/RootMotion/PuppetMaster/_Integration/Ootii's Motion Controller v2.73 (Unity 5.5.0).unitypackage.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

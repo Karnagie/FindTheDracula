@@ -1,4 +1,6 @@
 ﻿using System;
+using Core.BusEvents;
+using Core.BusEvents.Handlers;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,6 +11,7 @@ namespace AliveEssence
         [SerializeField] protected Animator _animator;
         [SerializeField] protected Transform _heart;
         [SerializeField] private Rigidbody[] _rigidbodies;
+        [SerializeField] private bool _loseOnDie;
 
         private void Awake()
         {
@@ -31,6 +34,8 @@ namespace AliveEssence
                 rigidbody1.isKinematic = false;
                 rigidbody1.AddForce(new Vector3(Random.Range(300, 300), Random.Range(600, 800), Random.Range(300, 300)));
             }
+            if(_loseOnDie)
+                EventBus.RaiseEvent((IGameStateHandler handler) => handler.LoseLevel());
         }
     }
 }

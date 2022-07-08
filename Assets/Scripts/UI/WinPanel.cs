@@ -13,11 +13,13 @@ namespace UI
 
         private void Awake()
         {
+            gameObject.SetActive(false);
             _canvas.alpha = 0;
         }
 
-        public async void Show()
+        public void Show()
         {
+            gameObject.SetActive(true);
             _canvas.alpha = 1;
             _sequence.Play();
         }

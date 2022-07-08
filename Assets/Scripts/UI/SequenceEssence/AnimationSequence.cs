@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace UI.SequenceEssence
@@ -10,15 +11,23 @@ namespace UI.SequenceEssence
 
         public async void Play()
         {
-            foreach (var animation in _animations)
+            try
             {
-                animation.Init();
-            }
+                foreach (var animation in _animations)
+                {
+                    animation.Init();
+                }
             
-            foreach (var animation in _animations)
+                foreach (var animation in _animations)
+                {
+                    await Task.Delay((int) (_delay * 1000));
+                    animation.Animate();
+                    await Task.Delay((int) (_delay * 1000));
+                }
+            }
+            catch (Exception e)
             {
-                animation.Animate();
-                await Task.Delay((int) (_delay * 1000));
+                Console.WriteLine(e);
             }
         }
     }

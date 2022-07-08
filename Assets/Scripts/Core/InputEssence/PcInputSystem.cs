@@ -21,7 +21,15 @@ namespace Core.InputEssence
         public Action<InputAction.CallbackContext> OnEndClick { get;  set; }
         public Action<InputAction.CallbackContext> OnTap { get;  set; }
 
-        public Vector3 MousePosition => Mouse.current.position.ReadUnprocessedValue();
+        public Vector3 MousePosition => CalculatePosition();
+
+        private Vector3 CalculatePosition()
+        {
+            #if UNITY_EDITOR
+            return Mouse.current.position.ReadUnprocessedValue();
+            #endif
+            return Touchscreen.current.position.ReadUnprocessedValue();
+        }
 
         public Vector2 MouseDelta => _actions.Player.Delta.ReadValue<Vector2>();
 

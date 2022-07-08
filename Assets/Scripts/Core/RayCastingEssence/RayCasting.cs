@@ -93,7 +93,7 @@ namespace Core.RayCastingEssence
         
         public bool Cast(ref RaycastHit hit, int layers)
         {
-            RaycastHit[] hits = Physics.RaycastAll(_camera.ScreenPointToRay(_input.MousePosition), 10, layers);
+            RaycastHit[] hits = Physics.RaycastAll(_camera.ScreenPointToRay(_input.MousePosition), 30, layers);
             if (hits.Length > 1)
             {
                 hit = hits[0];
