@@ -25,7 +25,6 @@ Shader "Examples/Stencil"
 				Ref [_StencilID]
 				Comp Always
 				Pass Replace
-				Fail Keep
 			}
         }
     }

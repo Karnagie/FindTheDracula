@@ -19,6 +19,7 @@ namespace PlayerEssence
         [SerializeField] private float _maxRotateAngle;
         [SerializeField] private Tools _tools;
         [SerializeField] private bool _isWorking;
+        [SerializeField] private bool _inverseRotate;
 
         [Inject] private IInputSystem _input;
         [Inject] private RayCasting _rayCasting;
@@ -27,6 +28,7 @@ namespace PlayerEssence
         private float _maxAngle;
         private float _startRotateAngle;
         private bool _pressing;
+        private float _mouseDelta;
 
         public void TurnOffControl()
         {
@@ -82,6 +84,7 @@ namespace PlayerEssence
         
         private void OnEndClick(InputAction.CallbackContext obj)
         {
+            _mouseDelta = 0;
             _pressing = false;
         }
 
@@ -101,25 +104,28 @@ namespace PlayerEssence
                 float rotVel = RotateAngle() > 0 ? -1 : 1;
                 transform.Rotate(new Vector3(0, rot * rotVel * Time.deltaTime * 50, 0));
                 Vector3 rotation = transform.eulerAngles;
-                int rotated = 0;
-                if (rotation.y < 55)
-                {
-                    if (_startRotateAngle < 55) _startRotateAngle+= 180;
-                    if (_startRotateAngle > (310))_startRotateAngle -= 180;
-                    rotation.y += 180;
-                    rotated = 180;
-                }
-                if (rotation.y > (310))
-                {
-                    if (_startRotateAngle < 55) _startRotateAngle+= 180;
-                    if (_startRotateAngle > (310))_startRotateAngle -= 180;
-                    rotation.y -= 180;
-                    rotated = -180;
-                }
+                if (_input.MouseDelta.x != 0) _mouseDelta = _input.MouseDelta.x;
+                if (_input.MouseDelta.x <= 0.1f) _mouseDelta = 0;
+                rotation.y += _mouseDelta*Time.deltaTime*2;
+                // int rotated = 0;
+                // if (rotation.y < 55)
+                // {
+                //     if (_startRotateAngle < 55) _startRotateAngle+= 180;
+                //     if (_startRotateAngle > (310))_startRotateAngle -= 180;
+                //     rotation.y += 180;
+                //     rotated = 180;
+                // }
+                // if (rotation.y > (310))
+                // {
+                //     if (_startRotateAngle < 55) _startRotateAngle+= 180;
+                //     if (_startRotateAngle > (310))_startRotateAngle -= 180;
+                //     rotation.y -= 180;
+                //     rotated = -180;
+                // }
                 
                 if (rotation.y > _startRotateAngle + _maxRotateAngle) rotation.y = _startRotateAngle + _maxRotateAngle;
                 if (rotation.y < _startRotateAngle - _maxRotateAngle) rotation.y = _startRotateAngle - _maxRotateAngle;
-                if (rotated != 0) rotation.y += rotated;
+                //if (rotated != 0) rotation.y += rotated;
                 transform.localRotation = Quaternion.Euler(rotation);
 
                 _tools.Pressing(_pressing, transform.position + direction);
@@ -155,7 +161,11 @@ namespace PlayerEssence
         {
             try
             {
-                await transform.DORotate(Quaternion.Euler(0, _startRotateAngle, 0).eulerAngles, 0.5f)
+                if(_inverseRotate)
+                    await transform.DORotate(Quaternion.Euler(0, 0, 0).eulerAngles, 1f)
+                        .AsyncWaitForCompletion();
+                else
+                    await transform.DORotate(Quaternion.Euler(0, _startRotateAngle, 0).eulerAngles, 1f)
                     .AsyncWaitForCompletion();
             }
             catch (Exception e)

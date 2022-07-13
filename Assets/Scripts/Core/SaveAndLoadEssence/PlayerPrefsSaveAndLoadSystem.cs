@@ -8,6 +8,7 @@ namespace Core.SaveAndLoadEssence
         public int GetCurrentWeaponId => PlayerPrefs.GetInt("CurrentWeapon", 0);
         public int NextLevel => CalculateNextLevel();
         public bool Tutorial => GetTutorial();
+        public int CurrentLevel => SceneManager.GetActiveScene().buildIndex;
 
         private bool GetTutorial()
         {

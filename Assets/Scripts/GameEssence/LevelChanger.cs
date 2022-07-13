@@ -14,5 +14,10 @@ namespace GameEssence
         {
             SceneManager.LoadScene(_saveAndLoad.NextLevel);
         }
+        
+        public void RestartCurrentLevel()
+        {
+            SceneManager.LoadScene(_saveAndLoad.CurrentLevel);
+        }
     }
 }

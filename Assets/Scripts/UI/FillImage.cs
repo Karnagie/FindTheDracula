@@ -54,17 +54,18 @@ namespace UI
                 _image.DOFade(1, .25f);
                 float fullFill = _image.fillAmount + _fillAmount;
                 await Task.Delay(500);
-                while (_image.fillAmount <= _saveAndLoad.FillPercent() )
+                if(_saveAndLoad.FillPercent() >= 1)
                 {
-                    _image.fillAmount += _fillSpeed * Time.deltaTime;
-                    await Task.Yield();
-                }
-                if(_saveAndLoad.FillPercent() >= 1 && _saveAndLoad.GetCurrentOpening() != 0)
-                {
+                    Debug.Log($"create weapon");
                     WeaponTool tool = _inventory.Get(_saveAndLoad.GetCurrentOpening());
                     tool.SetParent(transform);
                     tool.transform.localScale = Vector3.one*500;
                     tool.transform.localPosition = Vector3.zero;
+                }
+                while (_image.fillAmount <= _saveAndLoad.FillPercent() )
+                {
+                    _image.fillAmount += _fillSpeed * Time.deltaTime;
+                    await Task.Yield();
                 }
                 _image.fillAmount = _saveAndLoad.FillPercent();
             }

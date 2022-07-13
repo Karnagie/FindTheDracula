@@ -15,6 +15,7 @@ namespace PlayerEssence.ToolsEssence
         [SerializeField] private Vector3 _scaleOnUI;
         [SerializeField] private Vector3 _rotationOnUI;
         [SerializeField] private Vector3 _defaultRotation;
+        [SerializeField] private float _upper = 0.1f;
         
         private Tool _tool;
         private Vector3 _defaultPosition;
@@ -67,7 +68,7 @@ namespace PlayerEssence.ToolsEssence
         {
             _placeDefaultInHand.localRotation = Quaternion.identity;
             transform.DOKill(false);
-            transform.DOLocalMove(_placeDefaultInHand.localPosition, 1);
+            transform.DOLocalMove(_placeDefaultInHand.localPosition+Vector3.up*_upper, 1);
             transform.DOLocalRotate(_defaultRotation, 0.2f);
             transform.DOScale(_scaleInHand, 1);
         }
