@@ -27,7 +27,7 @@ namespace AliveEssence
 
         public void Die()
         {
-            OnKill?.Invoke();
+            if(_animator.enabled)OnKill?.Invoke();
             _animator.enabled = false;
             foreach (var rigidbody1 in _rigidbodies)
             {

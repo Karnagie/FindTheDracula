@@ -60,7 +60,7 @@ namespace PlayerEssence.ToolsEssence
         {
             transform.DOKill(false);
             transform.DOLocalMove(_defaultPosition, 1);
-            transform.DOLocalRotate(_rotationOnUI, 1f);
+            if(transform.localRotation.eulerAngles != _rotationOnUI)transform.DOLocalRotate(_rotationOnUI, 1f);
             transform.DOScale(_scaleOnUI, 1);
         }
 

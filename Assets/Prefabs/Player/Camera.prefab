@@ -64,7 +64,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2049
+    m_Bits: 2177
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -532,3 +532,4 @@ MonoBehaviour:
   _scaleOnUI: {x: 0.2, y: 0.2, z: 0.2}
   _rotationOnUI: {x: 0, y: 0, z: 0}
   _defaultRotation: {x: 0, y: 0, z: 0}
+  _upper: 0.1

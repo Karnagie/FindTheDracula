@@ -219,6 +219,7 @@ MonoBehaviour:
   _view: {fileID: 702426169277323286}
   _bulletPrefab: {fileID: 5823047068430803365, guid: 265069166b13c3843a80c4d4d64b383d, type: 3}
   _startBulletPosition: {fileID: 702426169909797391}
+  _ray: 0
 --- !u!114 &702426169277323286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,6 +238,8 @@ MonoBehaviour:
   _scaleInHand: {x: 1, y: 1, z: 1}
   _scaleOnUI: {x: 0.2, y: 0.2, z: 0.2}
   _rotationOnUI: {x: -112.342, y: 90, z: -90}
+  _defaultRotation: {x: 0, y: 0, z: 0}
+  _upper: -0.1
 --- !u!1 &702426169909797388
 GameObject:
   m_ObjectHideFlags: 0

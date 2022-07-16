@@ -29,6 +29,7 @@ namespace PlayerEssence
         private float _startRotateAngle;
         private bool _pressing;
         private float _mouseDelta;
+        private float _deltaAngle;
 
         public void TurnOffControl()
         {
@@ -41,6 +42,7 @@ namespace PlayerEssence
             _tools.AddWeapon(_inventory.GetCurrent());
             CalculateMaxAngle();
             _startRotateAngle = transform.eulerAngles.y;
+            _deltaAngle = 0;
             _isWorking = true;
         }
         
@@ -74,7 +76,7 @@ namespace PlayerEssence
         private void OnTap(InputAction.CallbackContext obj)
         {
             Vector3 direction = Camera.main.ScreenPointToRay(_input.MousePosition).direction.normalized;
-            if (_rayCasting.CastAll<ToolButton>().Length == 0 && _isWorking && _input.MousePosition.y > (Screen.height / 4)) _tools.OnClick(transform.position + direction);
+            if (_rayCasting.CastAll<ToolButton>().Length == 0 && _isWorking && _input.MousePosition.y > (Screen.height / 6)) _tools.OnClick(transform.position + direction);
         }
 
         private void OnStartClick(InputAction.CallbackContext obj)
@@ -98,7 +100,9 @@ namespace PlayerEssence
 
         private void Update()
         {
-            if(_isWorking){
+            if(_isWorking)
+            {
+                Quaternion oldRot = transform.localRotation;
                 Vector3 direction = Camera.main.ScreenPointToRay(_input.MousePosition).direction.normalized;
                 float rot = Mathf.Abs(RotateAngle()) > _maxAngle ? 1 : 0;
                 float rotVel = RotateAngle() > 0 ? -1 : 1;
@@ -122,11 +126,18 @@ namespace PlayerEssence
                 //     rotation.y -= 180;
                 //     rotated = -180;
                 // }
-                
-                if (rotation.y > _startRotateAngle + _maxRotateAngle) rotation.y = _startRotateAngle + _maxRotateAngle;
-                if (rotation.y < _startRotateAngle - _maxRotateAngle) rotation.y = _startRotateAngle - _maxRotateAngle;
-                //if (rotated != 0) rotation.y += rotated;
+                _deltaAngle += rot * rotVel * Time.deltaTime * 50 + _mouseDelta*Time.deltaTime*2;
+                Debug.Log(_deltaAngle);
                 transform.localRotation = Quaternion.Euler(rotation);
+                if (Mathf.Abs(_deltaAngle) > _maxRotateAngle)
+                {
+                    _deltaAngle -= rot * rotVel * Time.deltaTime * 50 + _mouseDelta*Time.deltaTime*2;
+                    transform.localRotation = oldRot;
+                }
+                //if (rotation.y > _startRotateAngle + _maxRotateAngle) rotation.y = _startRotateAngle + _maxRotateAngle;
+                //if (rotation.y < _startRotateAngle - _maxRotateAngle) rotation.y = _startRotateAngle - _maxRotateAngle;
+                //if (rotated != 0) rotation.y += rotated;
+                //transform.localRotation = Quaternion.Euler(rotation);
 
                 _tools.Pressing(_pressing, transform.position + direction);
             }
@@ -141,7 +152,7 @@ namespace PlayerEssence
             
             Vector3 vector = Quaternion.AngleAxis(-45, Vector3.up) * transform.forward.normalized;
             
-            angle = _input.MousePosition.y > (Screen.height / 4) ? angle : 0;
+            angle = _input.MousePosition.y > (Screen.height / 6) ? angle : 0;
             
             return Vector3.Angle(vector, direction) < 45 ? angle : -angle;
         }
