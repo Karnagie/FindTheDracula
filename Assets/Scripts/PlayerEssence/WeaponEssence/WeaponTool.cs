@@ -81,11 +81,24 @@ namespace PlayerEssence.WeaponEssence
             {
                 foreach (var aliveObject in aliveObjects)
                 {
+                    if(aliveObject.Dead) continue;
+                    
                     _point = aliveObject.Heart;
                     CreateBullet(aliveObject);
                     if(_ray)aliveObject.Die();
+                    return;
                 }
             }
+            // AliveObject[] aliveObjects = _rayCasting.CastAll<AliveObject>();
+            // if (aliveObjects.Length >= 1)
+            // {
+            //     foreach (var aliveObject in aliveObjects)
+            //     {
+            //         _point = aliveObject.Heart;
+            //         CreateBullet(aliveObject);
+            //         if(_ray)aliveObject.Die();
+            //     }
+            // }
         }
     }
 }

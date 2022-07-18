@@ -29,11 +29,13 @@ namespace AliveEssence
 
         public Vector3 Heart => _heart.position;
 
+        public bool Dead => _dead;
+
         public Action OnKill;
 
         public void Die()
         {
-            if(!_dead)
+            if(!Dead)
             {
                 foreach (var o in _turnOffOnDead)
                 {
