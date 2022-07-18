@@ -92,11 +92,11 @@ Material:
     - __dummy__: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _BaseColor1: {r: 0.20035408, g: 0.6132076, b: 0.1237985, a: 1}
+    - _BaseColor1: {r: 0.14392892, g: 0.38679248, b: 0.09998218, a: 1}
     - _Color: {r: 0.41176468, g: 0.41176468, b: 0.41176468, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HColor: {r: 0.75, g: 0.75, b: 0.75, a: 1}
     - _HColor1: {r: 0.75, g: 0.75, b: 0.75, a: 1}
     - _SColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _SColor1: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+    - _SColor1: {r: 0.0754717, g: 0.0754717, b: 0.0754717, a: 1}
   m_BuildTextureStacks: []

@@ -26,6 +26,9 @@ namespace PlayerEssence.ToolsEssence
         {
             _defaultPosition = transform.localPosition;
             transform.localRotation = Quaternion.Euler(_rotationOnUI);
+            var scale = transform.localScale;
+            //transform.localScale = Vector3.zero;
+            transform.DOPunchScale(scale/7, 1);
         }
 
         public void UpdateView(Button buttonOnPanel, Transform placeOnUI,  Transform placeDefaultInHand)

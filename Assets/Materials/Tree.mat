@@ -127,7 +127,7 @@ Material:
     - __dummy__: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _BaseColor1: {r: 0, g: 1, b: 0.4039216, a: 1}
+    - _BaseColor1: {r: 0.06621572, g: 0.5660378, b: 0.26810464, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HColor1: {r: 0, g: 0, b: 0, a: 1}

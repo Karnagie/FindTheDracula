@@ -127,7 +127,6 @@ namespace PlayerEssence
                 //     rotated = -180;
                 // }
                 _deltaAngle += rot * rotVel * Time.deltaTime * 50 + _mouseDelta*Time.deltaTime*2;
-                Debug.Log(_deltaAngle);
                 transform.localRotation = Quaternion.Euler(rotation);
                 if (Mathf.Abs(_deltaAngle) > _maxRotateAngle)
                 {
