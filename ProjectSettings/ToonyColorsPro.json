@@ -1,0 +1,17 @@
+{
+    "AutoNames": true,
+    "SubFolders": true,
+    "OverwriteConfig": true,
+    "LoadAllShaders": true,
+    "CustomOutputPath": "/JMO Assets/Toony Colors Pro/Shaders Generated/",
+    "LastImplementationExportImportPath": "C:/UnityProjects/Find the Dracula/Assets",
+    "OpenedFoldouts": [
+        "LIGHTING",
+        "SURFACE",
+        "OPTIONS",
+        "SHADER STATES",
+        "TRANSPARENCY/BLENDING",
+        "SPECIAL EFFECTS",
+        "STYLIZATION"
+    ]
+}
