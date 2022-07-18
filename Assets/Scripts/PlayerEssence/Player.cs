@@ -173,10 +173,10 @@ namespace PlayerEssence
             try
             {
                 if(_inverseRotate)
-                    await transform.DORotate(Quaternion.Euler(0, 0, 0).eulerAngles, 1f)
+                    await transform.DORotate(Quaternion.Euler(0, 0, 0).eulerAngles, 2f)
                         .AsyncWaitForCompletion();
                 else
-                    await transform.DORotate(Quaternion.Euler(0, _startRotateAngle, 0).eulerAngles, 1f)
+                    await transform.DORotate(Quaternion.Euler(0, _startRotateAngle, 0).eulerAngles, 2f)
                     .AsyncWaitForCompletion();
             }
             catch (Exception e)

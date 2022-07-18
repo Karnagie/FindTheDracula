@@ -8,10 +8,16 @@ namespace AliveEssence
 {
     public class AliveObject : MonoBehaviour
     {
-        [SerializeField] protected Animator _animator;
+        [SerializeField] protected Animator[] _animators;
         [SerializeField] protected Transform _heart;
         [SerializeField] private Rigidbody[] _rigidbodies;
         [SerializeField] private bool _loseOnDie;
+
+        [SerializeField] private ParticleSystem[] _onDeath;
+        [SerializeField] private GameObject[] _turnOffOnDead;
+        [SerializeField] private GameObject[] _turnOnOnDead;
+
+        private bool _dead;
 
         private void Awake()
         {
@@ -27,8 +33,27 @@ namespace AliveEssence
 
         public void Die()
         {
-            if(_animator.enabled)OnKill?.Invoke();
-            _animator.enabled = false;
+            if(!_dead)
+            {
+                foreach (var o in _turnOffOnDead)
+                {
+                    o.SetActive(false);
+                }
+                foreach (var o in _turnOnOnDead)
+                {
+                    o.SetActive(true);
+                }
+                foreach (var o in _onDeath)
+                {
+                    o.Play();
+                }
+                OnKill?.Invoke();
+            }
+            _dead = true;
+            foreach (var animator in _animators)
+            {
+                animator.SetBool("Died", true);
+            }
             foreach (var rigidbody1 in _rigidbodies)
             {
                 rigidbody1.isKinematic = false;
