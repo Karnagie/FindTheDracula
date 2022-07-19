@@ -24,7 +24,7 @@ namespace WeaponsEssence
 
         public void AddPercents(float count)
         {
-            int opening = _saveAndLoad.GetCurrentOpening();
+            int opening = _saveAndLoad.GetCurrentWeaponOpening();
             if (opening == -1 || _saveAndLoad.IsOpenedWeapon(opening))
             {
                 List<int> free = new List<int>();
@@ -39,7 +39,7 @@ namespace WeaponsEssence
             }
             if (opening == -1 || _saveAndLoad.IsOpenedWeapon(opening)) opening = 0;
             
-            _saveAndLoad.AddOpenPercents(opening, count);
+            _saveAndLoad.AddOpenWeaponPercents(opening, count);
         }
 
         public WeaponTool Get(int getCurrentOpening)

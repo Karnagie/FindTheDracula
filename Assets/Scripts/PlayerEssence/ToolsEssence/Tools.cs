@@ -12,26 +12,59 @@ namespace PlayerEssence.ToolsEssence
         
         [SerializeField] private Transform _rotator;
         [SerializeField] private Button _buttonOnPanel;
+        [SerializeField] private Button _buttonOnPanelTool;
         [SerializeField] private Transform _placeOnUI;
+        [SerializeField] private Transform _placeOnUITool;
         [SerializeField] private Transform _placeDefaultInHand;
+        [SerializeField] private Transform _placeDefaultInHandTool;
         
         [SerializeField] private Transform _weaponParent;
+        [SerializeField] private Transform _toolParent;
         [SerializeField] private List<Tool> _tools;
 
         public Tool Current { get; private set; }
 
         public void Init()
         {
-            //_weaponParent = transform;
-            Current = _tools[0];
-            foreach (var tool in _tools)
+            _buttonOnPanelTool.gameObject.SetActive(false);
+            _buttonOnPanel.onClick.AddListener((() =>
             {
-                tool.OnSelected += OnSelectedTools;
-            }
+                _buttonOnPanelTool.gameObject.SetActive(true);
+                _buttonOnPanel.gameObject.SetActive(false);
+            }));
+            _buttonOnPanelTool.onClick.AddListener((() =>
+            {
+                _buttonOnPanel.gameObject.SetActive(true);
+                _buttonOnPanelTool.gameObject.SetActive(false);
+            }));
+            
+            _tools = new List<Tool>();
+            //_weaponParent = transform;
+            // Current = _tools[0];
+            // foreach (var tool in _tools)
+            // {
+            //     tool.OnSelected += OnSelectedTools;
+            // }
 
             //OnSelectedTools(_tools[0]);
             _toolsParent.SetActive(true);
             _toolCanvas.SetActive(true);
+        }
+        
+        public void AddEquipment(Tool newTool)
+        {
+            newTool.OnSelected += OnSelectedTools;
+            Vector3 position = newTool.transform.position;
+            newTool.SetParent(_toolParent);
+            newTool.transform.localPosition = position;
+            if (newTool.ChangePlace)
+            {
+                newTool.ResetUI(_rotator, _buttonOnPanelTool, _placeOnUITool, _placeDefaultInHand, false);
+            }else newTool.ResetUI(_rotator, _buttonOnPanelTool, _placeOnUITool, _placeDefaultInHandTool, false);
+            newTool.Return();
+            _tools.Add(newTool);
+            _tools[0].GetInHand();
+            Current = _tools[0];
         }
 
         public void AddWeapon(Tool newTool)
@@ -40,7 +73,7 @@ namespace PlayerEssence.ToolsEssence
             Vector3 position = newTool.transform.position;
             newTool.SetParent(_weaponParent);
             newTool.transform.localPosition = position;
-            newTool.ResetUI(_rotator, _buttonOnPanel, _placeOnUI, _placeDefaultInHand);
+            newTool.ResetUI(_rotator, _buttonOnPanel, _placeOnUI, _placeDefaultInHand, true);
             newTool.Return();
             _tools.Add(newTool);
         }

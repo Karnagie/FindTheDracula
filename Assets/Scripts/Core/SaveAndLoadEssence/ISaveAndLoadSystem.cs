@@ -6,11 +6,22 @@
         int NextLevel { get;}
         bool Tutorial { get;}
         int CurrentLevel { get; }
+        int GetCurrentEquipmentId { get; }
         void ChangeCurrentWeapon(int id);
         bool IsOpenedWeapon(int index);
         void OpenWeapon(int index);
-        void AddOpenPercents(int index, float value);
-        int GetCurrentOpening();
-        float FillPercent();
+        void AddOpenWeaponPercents(int index, float value);
+        int GetCurrentWeaponOpening();
+        float FillWeaponPercent();
+        
+        
+        
+        void ChangeCurrentEquipment(int id);
+        bool IsOpenedEquipment(int index);
+        void OpenEquipment(int index);
+        void AddOpenEquipmentPercents(int index, float value);
+        int GetCurrentEquipmentOpening();
+        float FillEquipmentPercent();
+        int IsNextWeaponOrQuestion();
     }
 }

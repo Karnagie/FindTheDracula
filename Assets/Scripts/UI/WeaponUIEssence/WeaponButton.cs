@@ -10,6 +10,7 @@ namespace UI.WeaponUIEssence
     {
         [SerializeField] private int _index;
         [SerializeField] private bool _openedByDefault;
+        [SerializeField] private bool _isEquipment;
 
         [SerializeField] private GameObject _lock;
         [SerializeField] private GameObject _opened;
@@ -20,13 +21,25 @@ namespace UI.WeaponUIEssence
 
         private void Awake()
         {
-            if (_openedByDefault) _saveAndLoad.OpenWeapon(_index);
+            if (_isEquipment)
+            {
+                if (_openedByDefault) _saveAndLoad.OpenEquipment(_index);
             
-            if (_saveAndLoad.IsOpenedWeapon(_index))
-                Open();
+                if (_saveAndLoad.IsOpenedEquipment(_index))
+                    Open();
+                else
+                    Lock();
+            }
             else
-                Lock();
+            {
+                if (_openedByDefault) _saveAndLoad.OpenWeapon(_index);
             
+                if (_saveAndLoad.IsOpenedWeapon(_index))
+                    Open();
+                else
+                    Lock();   
+            }
+
             _button.onClick.AddListener(OnClick);
         }
 

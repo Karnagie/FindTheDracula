@@ -4,6 +4,7 @@ using Core.AnimationEssence;
 using Core.InputEssence;
 using Core.RayCastingEssence;
 using DG.Tweening;
+using PlayerEssence.ChoosableEquipmentEssence;
 using PlayerEssence.ToolsEssence;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -24,6 +25,7 @@ namespace PlayerEssence
         [Inject] private IInputSystem _input;
         [Inject] private RayCasting _rayCasting;
         [Inject] private WeaponInventory _inventory;
+        [Inject] private ChoosableEquipmentInventory _equipmentInventory;
 
         private float _maxAngle;
         private float _startRotateAngle;
@@ -39,6 +41,7 @@ namespace PlayerEssence
         [ContextMenu("Turn on control")]
         public void TurnOnControl()
         {
+            _tools.AddEquipment(_equipmentInventory.GetCurrent());
             _tools.AddWeapon(_inventory.GetCurrent());
             CalculateMaxAngle();
             _startRotateAngle = transform.eulerAngles.y;

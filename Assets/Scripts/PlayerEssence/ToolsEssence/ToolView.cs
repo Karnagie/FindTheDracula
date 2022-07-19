@@ -8,6 +8,7 @@ namespace PlayerEssence.ToolsEssence
 {
     public class ToolView : MonoBehaviour
     {
+        [SerializeField] private GameObject[] _deactivateInUI;
         [SerializeField] private Button _buttonOnPanel;
         [SerializeField] private Transform _placeOnUI;
         [SerializeField] private Transform _placeDefaultInHand;
@@ -31,9 +32,9 @@ namespace PlayerEssence.ToolsEssence
             transform.DOPunchScale(scale/7, 1);
         }
 
-        public void UpdateView(Button buttonOnPanel, Transform placeOnUI,  Transform placeDefaultInHand)
+        public void UpdateView(Button buttonOnPanel, Transform placeOnUI,  Transform placeDefaultInHand, bool resetRot = true)
         {
-            _defaultRotation = Quaternion.identity.eulerAngles;
+            if(resetRot)_defaultRotation = Quaternion.identity.eulerAngles;
             transform.localRotation = Quaternion.Euler(_rotationOnUI);
             _buttonOnPanel = buttonOnPanel;
             _placeOnUI = placeOnUI;
@@ -61,6 +62,11 @@ namespace PlayerEssence.ToolsEssence
 
         public void ReturnToUI()
         {
+            foreach (var o in _deactivateInUI)
+            {
+                o.SetActive(false);
+            }
+            
             transform.DOKill(false);
             transform.DOLocalMove(_defaultPosition, 1);
             if(transform.localRotation.eulerAngles != _rotationOnUI)transform.DOLocalRotate(_rotationOnUI, 1f);
@@ -69,6 +75,11 @@ namespace PlayerEssence.ToolsEssence
 
         public void GetInHand()
         {
+            foreach (var o in _deactivateInUI)
+            {
+                o.SetActive(true);
+            }
+            
             _placeDefaultInHand.localRotation = Quaternion.identity;
             transform.DOKill(false);
             transform.DOLocalMove(_placeDefaultInHand.localPosition+Vector3.up*_upper, 1);

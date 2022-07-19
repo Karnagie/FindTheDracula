@@ -13,6 +13,8 @@ namespace PlayerEssence.ToolsEssence
         private Transform _defaultParent;
         
         public UnityAction<Tool> OnSelected;
+        
+        public bool ChangePlace;
 
         protected virtual void Awake()
         {
@@ -27,11 +29,11 @@ namespace PlayerEssence.ToolsEssence
             transform.SetParent(_defaultParent);
         }
 
-        public void ResetUI(Transform rotator, Button buttonOnPanel, Transform placeOnUI,  Transform placeDefaultInHand)
+        public void ResetUI(Transform rotator, Button buttonOnPanel, Transform placeOnUI,  Transform placeDefaultInHand, bool resetRot)
         {
             _rotator = rotator;
             if(_defaultParent == null)_defaultParent = transform.parent;
-            _view.UpdateView(buttonOnPanel, placeOnUI, placeDefaultInHand);
+            _view.UpdateView(buttonOnPanel, placeOnUI, placeDefaultInHand, resetRot);
         }
 
         public virtual void Return()

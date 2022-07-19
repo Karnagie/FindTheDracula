@@ -49,8 +49,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotator: {fileID: 0}
   _view: {fileID: 3751077095135076862}
+  ChangePlace: 0
   _bulletPrefab: {fileID: 8710617773088604198, guid: 7930578220b500146a5a1a4330921940, type: 3}
   _startBulletPosition: {fileID: 8193514123047470326}
+  _ray: 0
 --- !u!114 &3751077095135076862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,6 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d19d355e720a4dce91b370e704a4cbce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _deactivateInUI: []
   _buttonOnPanel: {fileID: 0}
   _placeOnUI: {fileID: 0}
   _placeDefaultInHand: {fileID: 0}
@@ -70,6 +73,7 @@ MonoBehaviour:
   _scaleOnUI: {x: 0.2, y: 0.2, z: 0.2}
   _rotationOnUI: {x: 0, y: -174.809, z: 21.607}
   _defaultRotation: {x: 0, y: 0, z: 0}
+  _upper: 0.1
 --- !u!1 &7134741091739129934
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +166,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31d6e5cd36aa51044a0b42cb8ba4ae6f, type: 2}
+  - {fileID: 2100000, guid: 62e5cc6033525e94cb495f38775f52bc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

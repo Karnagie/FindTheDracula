@@ -15,7 +15,7 @@ namespace PlayerEssence.FlashlightEssence
 
         private void Start()
         {
-            _light.TurnOff();
+            //_light.TurnOff();
         }
 
         public override void Return()

@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using Core.SaveAndLoadEssence;
 using DG.Tweening;
+using PlayerEssence.ChoosableEquipmentEssence;
+using PlayerEssence.ToolsEssence;
 using PlayerEssence.WeaponEssence;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,12 +20,9 @@ namespace UI
         [SerializeField] private float _fillAmount = 0.25f;
 
         [Inject] private WeaponInventory _inventory;
+        [Inject] private ChoosableEquipmentInventory _equipmentInventory;
         [Inject] private ISaveAndLoadSystem _saveAndLoad;
 
-        private void Awake()
-        {
-            
-        }
 
         public override void Init()
         {
@@ -35,39 +34,79 @@ namespace UI
         {
             try
             {
-                _inventory.AddPercents(_fillAmount);
-                var count = _saveAndLoad.FillPercent();
-                Debug.Log(_saveAndLoad.FillPercent());
-                _image.fillAmount = 0;
-                switch (count)
+                int w = _saveAndLoad.IsNextWeaponOrQuestion();
+                if (w == 0 && _saveAndLoad.GetCurrentWeaponOpening() != 0)
                 {
-                    case 0: 
-                        _image.fillAmount = 0;
-                        break;
-                    case -1:
-                        _image.fillAmount = 0;
-                        break;
-                }
+                    _inventory.AddPercents(_fillAmount);
+                    var count = _saveAndLoad.FillWeaponPercent();
+                    Debug.Log(_saveAndLoad.FillWeaponPercent());
+                    _image.fillAmount = 0;
+                    switch (count)
+                    {
+                        case 0: 
+                            _image.fillAmount = 0;
+                            break;
+                        case -1:
+                            _image.fillAmount = 0;
+                            break;
+                    }
                 
-                transform.DORewind ();
-                transform.DOPunchScale (new Vector3 (1, 1, 1), .1f);
-                _image.DOFade(1, .25f);
-                float fullFill = _image.fillAmount + _fillAmount;
-                await Task.Delay(500);
-                if(_saveAndLoad.FillPercent() >= 1)
-                {
-                    Debug.Log($"create weapon");
-                    WeaponTool tool = _inventory.Get(_saveAndLoad.GetCurrentOpening());
-                    tool.SetParent(transform);
-                    tool.transform.localScale = Vector3.one*500;
-                    tool.transform.localPosition = Vector3.zero;
+                    transform.DORewind ();
+                    transform.DOPunchScale (new Vector3 (1, 1, 1), .1f);
+                    _image.DOFade(1, .25f);
+                    float fullFill = _image.fillAmount + _fillAmount;
+                    await Task.Delay(500);
+                    if(_saveAndLoad.FillWeaponPercent() >= 1)
+                    {
+                        Debug.Log($"create weapon");
+                        WeaponTool tool = _inventory.Get(_saveAndLoad.GetCurrentWeaponOpening());
+                        tool.SetParent(transform);
+                        tool.transform.localScale = Vector3.one*500;
+                        tool.transform.localPosition = Vector3.zero;
+                    }
+                    while (_image.fillAmount <= _saveAndLoad.FillWeaponPercent() )
+                    {
+                        _image.fillAmount += _fillSpeed * Time.deltaTime;
+                        await Task.Yield();
+                    }
+                    _image.fillAmount = _saveAndLoad.FillWeaponPercent();
                 }
-                while (_image.fillAmount <= _saveAndLoad.FillPercent() )
+                else if (_saveAndLoad.GetCurrentEquipmentOpening() != 0)
                 {
-                    _image.fillAmount += _fillSpeed * Time.deltaTime;
-                    await Task.Yield();
+                    _equipmentInventory.AddPercents(_fillAmount);
+                    var count = _saveAndLoad.FillEquipmentPercent();
+                    Debug.Log(_saveAndLoad.FillEquipmentPercent());
+                    _image.fillAmount = 0;
+                    switch (count)
+                    {
+                        case 0: 
+                            _image.fillAmount = 0;
+                            break;
+                        case -1:
+                            _image.fillAmount = 0;
+                            break;
+                    }
+                
+                    transform.DORewind ();
+                    transform.DOPunchScale (new Vector3 (1, 1, 1), .1f);
+                    _image.DOFade(1, .25f);
+                    float fullFill = _image.fillAmount + _fillAmount;
+                    await Task.Delay(500);
+                    if(_saveAndLoad.FillEquipmentPercent() >= 1)
+                    {
+                        Debug.Log($"create Equipment");
+                        Tool tool = _equipmentInventory.Get(_saveAndLoad.GetCurrentEquipmentOpening());
+                        tool.SetParent(transform);
+                        tool.transform.localScale = Vector3.one*500;
+                        tool.transform.localPosition = Vector3.zero;
+                    }
+                    while (_image.fillAmount <= _saveAndLoad.FillEquipmentPercent() )
+                    {
+                        _image.fillAmount += _fillSpeed * Time.deltaTime;
+                        await Task.Yield();
+                    }
+                    _image.fillAmount = _saveAndLoad.FillEquipmentPercent();
                 }
-                _image.fillAmount = _saveAndLoad.FillPercent();
             }
             catch (Exception e)
             {
