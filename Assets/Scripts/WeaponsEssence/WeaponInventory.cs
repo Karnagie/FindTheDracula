@@ -47,5 +47,20 @@ namespace WeaponsEssence
             WeaponTool tool = _container.InstantiatePrefab(_weapons[getCurrentOpening]).GetComponent<WeaponTool>();
             return tool;
         }
+
+        public bool IsAllFilled()
+        {
+            List<int> free = new List<int>();
+            int i = 0;
+            foreach (var index in _weapons)
+            {
+                if(!_saveAndLoad.IsOpenedWeapon(i))
+                    free.Add(i);
+                i++;
+            }
+
+            if (free.Count == 0) return true;
+            return false;
+        }
     }
 }

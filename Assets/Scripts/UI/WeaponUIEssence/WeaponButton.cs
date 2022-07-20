@@ -45,9 +45,19 @@ namespace UI.WeaponUIEssence
 
         private void OnClick()
         {
-            if (_saveAndLoad.IsOpenedWeapon(_index))
+            if (_isEquipment)
             {
-                _shower.Change(_index);
+                if (_saveAndLoad.IsOpenedEquipment(_index))
+                {
+                    _shower.Change(_index);
+                }
+            }
+            else
+            {
+                if (_saveAndLoad.IsOpenedWeapon(_index))
+                {
+                    _shower.Change(_index);
+                }
             }
         }
 

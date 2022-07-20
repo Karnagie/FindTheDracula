@@ -48,5 +48,20 @@ namespace PlayerEssence.ChoosableEquipmentEssence
             Tool tool = _container.InstantiatePrefab(_tools[getCurrentOpening]).GetComponent<Tool>();
             return tool;
         }
+
+        public bool IsAllFilled()
+        {
+            List<int> free = new List<int>();
+            int i = 0;
+            foreach (var index in _tools)
+            {
+                if(!_saveAndLoad.IsOpenedEquipment(i))
+                    free.Add(i);
+                i++;
+            }
+
+            if (free.Count == 0) return true;
+            return false;
+        }
     }
 }

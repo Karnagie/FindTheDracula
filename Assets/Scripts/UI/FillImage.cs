@@ -18,6 +18,7 @@ namespace UI
         [SerializeField] private Image _image;
         [SerializeField] private float _fillSpeed = 2f;
         [SerializeField] private float _fillAmount = 0.25f;
+        [SerializeField] private ParticleSystem[] _onGetting;
 
         [Inject] private WeaponInventory _inventory;
         [Inject] private ChoosableEquipmentInventory _equipmentInventory;
@@ -35,11 +36,12 @@ namespace UI
             try
             {
                 int w = _saveAndLoad.IsNextWeaponOrQuestion();
-                if (w == 0 && _saveAndLoad.GetCurrentWeaponOpening() != 0)
+                if ((w == 0 && _saveAndLoad.GetCurrentWeaponOpening() != 0 && _inventory.IsAllFilled() == false)
+                    || _equipmentInventory.IsAllFilled())
                 {
+                    Debug.Log( _equipmentInventory.IsAllFilled());
                     _inventory.AddPercents(_fillAmount);
                     var count = _saveAndLoad.FillWeaponPercent();
-                    Debug.Log(_saveAndLoad.FillWeaponPercent());
                     _image.fillAmount = 0;
                     switch (count)
                     {
@@ -63,19 +65,30 @@ namespace UI
                         tool.SetParent(transform);
                         tool.transform.localScale = Vector3.one*500;
                         tool.transform.localPosition = Vector3.zero;
+                        tool.transform.DOLocalRotate(tool.transform.localRotation.eulerAngles+new Vector3(0, 360, 0), 3, RotateMode.FastBeyond360 )
+                            .SetLoops(-1)
+                            .SetEase(Ease.Linear)
+                            .SetRelative();
+                        foreach (var system in _onGetting)
+                        {
+                            system.Play();
+                        }
                     }
-                    while (_image.fillAmount <= _saveAndLoad.FillWeaponPercent() )
+                    else
                     {
-                        _image.fillAmount += _fillSpeed * Time.deltaTime;
-                        await Task.Yield();
+                        while (_image.fillAmount <= _saveAndLoad.FillWeaponPercent() )
+                        {
+                            _image.fillAmount += _fillSpeed * Time.deltaTime;
+                            await Task.Yield();
+                        }
+                        _image.fillAmount = _saveAndLoad.FillWeaponPercent();
                     }
-                    _image.fillAmount = _saveAndLoad.FillWeaponPercent();
                 }
-                else if (_saveAndLoad.GetCurrentEquipmentOpening() != 0)
+                else if (_saveAndLoad.GetCurrentEquipmentOpening() != 0 || _inventory.IsAllFilled())
                 {
+                    Debug.Log(_saveAndLoad.FillEquipmentPercent());
                     _equipmentInventory.AddPercents(_fillAmount);
                     var count = _saveAndLoad.FillEquipmentPercent();
-                    Debug.Log(_saveAndLoad.FillEquipmentPercent());
                     _image.fillAmount = 0;
                     switch (count)
                     {
@@ -99,13 +112,24 @@ namespace UI
                         tool.SetParent(transform);
                         tool.transform.localScale = Vector3.one*500;
                         tool.transform.localPosition = Vector3.zero;
+                        tool.transform.DOLocalRotate(tool.transform.localRotation.eulerAngles+new Vector3(0, 360, 0), 3, RotateMode.FastBeyond360 )
+                            .SetLoops(-1)
+                            .SetEase(Ease.Linear)
+                            .SetRelative();
+                        foreach (var system in _onGetting)
+                        {
+                            system.Play();
+                        }
                     }
-                    while (_image.fillAmount <= _saveAndLoad.FillEquipmentPercent() )
+                    else
                     {
-                        _image.fillAmount += _fillSpeed * Time.deltaTime;
-                        await Task.Yield();
+                        while (_image.fillAmount <= _saveAndLoad.FillEquipmentPercent() )
+                        {
+                            _image.fillAmount += _fillSpeed * Time.deltaTime;
+                            await Task.Yield();
+                        }
+                        _image.fillAmount = _saveAndLoad.FillEquipmentPercent();
                     }
-                    _image.fillAmount = _saveAndLoad.FillEquipmentPercent();
                 }
             }
             catch (Exception e)

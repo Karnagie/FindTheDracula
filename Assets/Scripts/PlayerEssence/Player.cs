@@ -103,17 +103,17 @@ namespace PlayerEssence
 
         private void Update()
         {
-            if(_isWorking)
+            if(_isWorking && _pressing)
             {
                 Quaternion oldRot = transform.localRotation;
                 Vector3 direction = Camera.main.ScreenPointToRay(_input.MousePosition).direction.normalized;
                 float rot = Mathf.Abs(RotateAngle()) > _maxAngle ? 1 : 0;
                 float rotVel = RotateAngle() > 0 ? -1 : 1;
-                transform.Rotate(new Vector3(0, rot * rotVel * Time.deltaTime * 50, 0));
+                transform.Rotate(new Vector3(0, rot * rotVel * Time.deltaTime * 20, 0));
                 Vector3 rotation = transform.eulerAngles;
                 if (_input.MouseDelta.x != 0) _mouseDelta = _input.MouseDelta.x;
                 if (_input.MouseDelta.x <= 0.1f) _mouseDelta = 0;
-                rotation.y += _mouseDelta*Time.deltaTime*2;
+                rotation.y += _mouseDelta*Time.deltaTime;
                 // int rotated = 0;
                 // if (rotation.y < 55)
                 // {
@@ -129,11 +129,11 @@ namespace PlayerEssence
                 //     rotation.y -= 180;
                 //     rotated = -180;
                 // }
-                _deltaAngle += rot * rotVel * Time.deltaTime * 50 + _mouseDelta*Time.deltaTime*2;
+                _deltaAngle += rot * rotVel * Time.deltaTime * 20 + _mouseDelta*Time.deltaTime;
                 transform.localRotation = Quaternion.Euler(rotation);
                 if (Mathf.Abs(_deltaAngle) > _maxRotateAngle)
                 {
-                    _deltaAngle -= rot * rotVel * Time.deltaTime * 50 + _mouseDelta*Time.deltaTime*2;
+                    _deltaAngle -= rot * rotVel * Time.deltaTime * 20 + _mouseDelta*Time.deltaTime;
                     transform.localRotation = oldRot;
                 }
                 //if (rotation.y > _startRotateAngle + _maxRotateAngle) rotation.y = _startRotateAngle + _maxRotateAngle;

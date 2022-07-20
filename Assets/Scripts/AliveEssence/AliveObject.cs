@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Core.BusEvents;
 using Core.BusEvents.Handlers;
 using UnityEngine;
@@ -33,8 +34,10 @@ namespace AliveEssence
 
         public Action OnKill;
 
-        public void Die()
+        public async void Die()
         {
+            await Task.Delay(500);
+            
             if(!Dead)
             {
                 foreach (var o in _turnOffOnDead)
