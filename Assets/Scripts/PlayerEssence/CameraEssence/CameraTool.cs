@@ -30,15 +30,15 @@ namespace PlayerEssence.CameraEssence
             _image.sprite = _camera.CaptureScreen(1024, 1024);
         }
 
-        public override void Press(Vector3 direction)
-        {
-            
-        }
-
-        public override void Click(Vector3 direction)
-        {
-            _rotator.LookAt(direction);
-            TakePhoto();
-        }
+        // public override void Press(Vector3 direction)
+        // {
+        //     
+        // }
+        //
+        // public override void Click(Vector3 direction)
+        // {
+        //     _rotator.LookAt(direction);
+        //     TakePhoto();
+        // }
     }
 }
