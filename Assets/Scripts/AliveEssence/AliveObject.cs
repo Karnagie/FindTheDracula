@@ -34,9 +34,9 @@ namespace AliveEssence
 
         public Action OnKill;
 
-        public async void Die()
+        public async void Die(bool immediately = false)
         {
-            await Task.Delay(500);
+            if(!immediately)await Task.Delay(500);
             
             if(!Dead)
             {

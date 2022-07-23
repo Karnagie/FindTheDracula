@@ -10,7 +10,7 @@ namespace PlayerEssence.WeaponEssence
         {
             transform.DOMove(aliveObject.Heart, 0.2f).OnComplete((() =>
             {
-                aliveObject.Die();
+                aliveObject.Die(true);
                 Destroy(gameObject);
             }));
         }
