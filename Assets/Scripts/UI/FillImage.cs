@@ -20,6 +20,9 @@ namespace UI
         [SerializeField] private float _fillAmount = 0.25f;
         [SerializeField] private ParticleSystem[] _onGetting;
 
+        [SerializeField] private FillObject[] _weapons;
+        [SerializeField] private FillObject[] _tools;
+
         [Inject] private WeaponInventory _inventory;
         [Inject] private ChoosableEquipmentInventory _equipmentInventory;
         [Inject] private ISaveAndLoadSystem _saveAndLoad;
@@ -35,6 +38,7 @@ namespace UI
         {
             try
             {
+                Debug.Log($"Start animating {_inventory.IsAllFilled()} {_saveAndLoad.GetCurrentEquipmentOpening()}");
                 int w = _saveAndLoad.IsNextWeaponOrQuestion();
                 if ((w == 0 && _saveAndLoad.GetCurrentWeaponOpening() != 0 && _inventory.IsAllFilled() == false)
                     || _equipmentInventory.IsAllFilled())
@@ -55,7 +59,7 @@ namespace UI
                 
                     transform.DORewind ();
                     transform.DOPunchScale (new Vector3 (1, 1, 1), .1f);
-                    _image.DOFade(1, .25f);
+                    //_image.DOFade(1, .25f);
                     float fullFill = _image.fillAmount + _fillAmount;
                     await Task.Delay(500);
                     if(_saveAndLoad.FillWeaponPercent() >= 1)
@@ -76,12 +80,15 @@ namespace UI
                     }
                     else
                     {
+                        _weapons[_saveAndLoad.GetCurrentWeaponOpening()].Fill(_image.fillAmount);
                         while (_image.fillAmount <= _saveAndLoad.FillWeaponPercent() )
                         {
                             _image.fillAmount += _fillSpeed * Time.deltaTime;
+                            _weapons[_saveAndLoad.GetCurrentWeaponOpening()].Fill(_image.fillAmount);
                             await Task.Yield();
                         }
                         _image.fillAmount = _saveAndLoad.FillWeaponPercent();
+                        _weapons[_saveAndLoad.GetCurrentWeaponOpening()].Fill(_image.fillAmount);
                     }
                 }
                 else if (_saveAndLoad.GetCurrentEquipmentOpening() != 0 || _inventory.IsAllFilled())
@@ -102,7 +109,7 @@ namespace UI
                 
                     transform.DORewind ();
                     transform.DOPunchScale (new Vector3 (1, 1, 1), .1f);
-                    _image.DOFade(1, .25f);
+                    //_image.DOFade(1, .25f);
                     float fullFill = _image.fillAmount + _fillAmount;
                     await Task.Delay(500);
                     if(_saveAndLoad.FillEquipmentPercent() >= 1)
@@ -123,12 +130,15 @@ namespace UI
                     }
                     else
                     {
+                        _tools[_saveAndLoad.GetCurrentEquipmentOpening()].Fill(_image.fillAmount);
                         while (_image.fillAmount <= _saveAndLoad.FillEquipmentPercent() )
                         {
                             _image.fillAmount += _fillSpeed * Time.deltaTime;
+                            _tools[_saveAndLoad.GetCurrentEquipmentOpening()].Fill(_image.fillAmount);
                             await Task.Yield();
                         }
                         _image.fillAmount = _saveAndLoad.FillEquipmentPercent();
+                        _tools[_saveAndLoad.GetCurrentEquipmentOpening()].Fill(_image.fillAmount);
                     }
                 }
             }

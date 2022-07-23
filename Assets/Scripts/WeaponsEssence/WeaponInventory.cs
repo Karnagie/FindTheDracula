@@ -31,8 +31,16 @@ namespace WeaponsEssence
                 int i = 0;
                 foreach (var index in _weapons)
                 {
+                    if(i == 0)
+                    {
+                        i++;
+                        continue;
+                    }
                     if(!_saveAndLoad.IsOpenedWeapon(i))
+                    {
                         free.Add(i);
+                        Debug.Log(i);
+                    }
                     i++;
                 }
                 opening = free[Random.Range(0, free.Count)];

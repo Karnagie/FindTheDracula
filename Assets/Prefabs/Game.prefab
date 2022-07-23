@@ -3254,6 +3254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6747123565408023647}
   - component: {fileID: 6747123565408023646}
+  - component: {fileID: 7870228134498573243}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -3299,6 +3300,18 @@ MonoBehaviour:
   _toPuzzle: {fileID: 6747123565853832723}
   _win: {fileID: 6747123567074715878}
   _losePanel: {fileID: 0}
+--- !u!114 &7870228134498573243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6747123565408023632}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99fe4ae7565b4812b2562026850703de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6747123565526670696
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,8 +10,9 @@
         "SURFACE",
         "OPTIONS",
         "SHADER STATES",
-        "TRANSPARENCY/BLENDING",
         "SPECIAL EFFECTS",
-        "STYLIZATION"
+        "STYLIZATION",
+        "TRANSPARENCY/BLENDING",
+        "THIRD PARTY PLUGINS"
     ]
 }

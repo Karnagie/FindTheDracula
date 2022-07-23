@@ -1,5 +1,5 @@
 ﻿// Toony Colors Pro+Mobile 2
-// (c) 2014-2019 Jean Moreno
+// (c) 2014-2020 Jean Moreno
 
 Shader "Toony Colors Pro 2/Examples/SG2/Detail Texture"
 {
@@ -42,7 +42,7 @@ Shader "Toony Colors Pro 2/Examples/SG2/Detail Texture"
 
 		CGPROGRAM
 
-		#pragma surface surf ToonyColorsCustom vertex:vertex_surface exclude_path:deferred exclude_path:prepass keepalpha nolightmap nofog
+		#pragma surface surf ToonyColorsCustom vertex:vertex_surface exclude_path:deferred exclude_path:prepass keepalpha nolightmap nofog nolppv
 		#pragma target 3.0
 
 		//================================================================
@@ -64,8 +64,8 @@ Shader "Toony Colors Pro 2/Examples/SG2/Detail Texture"
 		fixed4 _Color;
 		float _RampThreshold;
 		float _RampSmoothing;
-		fixed3 _HColor;
-		fixed3 _SColor;
+		fixed4 _HColor;
+		fixed4 _SColor;
 		// Calculates UV offset for parallax bump mapping
 		inline float2 TCP2_ParallaxOffset( half h, half height, half3 viewDir )
 		{
@@ -102,7 +102,7 @@ Shader "Toony Colors Pro 2/Examples/SG2/Detail Texture"
 			UNITY_INITIALIZE_OUTPUT(Input, output);
 
 			// Texture Coordinates
-			output.texcoord0.xy = (v.texcoord0.xy) * _NormalMap_ST.xy * _MainTex_ST.xy + _NormalMap_ST.zw + _MainTex_ST.zw;
+			output.texcoord0.xy = v.texcoord0.xy * _NormalMap_ST.xy * _MainTex_ST.xy + _NormalMap_ST.zw + _MainTex_ST.zw;
 
 			output.tangent = v.tangent.xyz;
 		}
@@ -136,19 +136,19 @@ Shader "Toony Colors Pro 2/Examples/SG2/Detail Texture"
 		void surf(Input input, inout SurfaceOutputCustom output)
 		{
 			//Parallax Offset
-			float __parallaxHeightMap = ( tex2D(_ParallaxMap, (input.texcoord0.xy)).a );
+			float __parallaxHeightMap = ( tex2D(_ParallaxMap, input.texcoord0.xy).a );
 			float __parallaxHeight = ( _Parallax );
 			half height = __parallaxHeightMap;
 			float2 offset = ParallaxOffset(height, __parallaxHeight, input.viewDir);
 			input.texcoord0 += offset;
 			// Custom Material Properties Sampling
-			half4 value__DetailTex = tex2D(_DetailTex, (input.texcoord0.xy) * _DetailTex_ST.xy + _DetailTex_ST.zw).rgba;
+			half4 value__DetailTex = tex2D(_DetailTex, input.texcoord0.xy * _DetailTex_ST.xy + _DetailTex_ST.zw).rgba;
 
 			// Sampled in Custom Code
-			float4 imp__albedo_0 = value__DetailTex;
+			float4 imp_100 = value__DetailTex;
 			// Shader Properties Sampling
-			float4 __normalMap = (  lerp(tex2D(_NormalMap, (input.texcoord0.xy)).rgba, tex2D(_DetailNormalMap, (input.texcoord0.xy) * _DetailNormalMap_ST.xy + _DetailNormalMap_ST.zw).rgba, value__DetailTex.a) );
-			float4 __albedo = (  lerp(tex2D(_MainTex, (input.texcoord0.xy)).rgba, imp__albedo_0.rgba, imp__albedo_0.a) );
+			float4 __normalMap = (  lerp(tex2D(_NormalMap, input.texcoord0.xy).rgba, tex2D(_DetailNormalMap, input.texcoord0.xy * _DetailNormalMap_ST.xy + _DetailNormalMap_ST.zw).rgba, value__DetailTex.a) );
+			float4 __albedo = (  lerp(tex2D(_MainTex, input.texcoord0.xy).rgba, imp_100.rgba, imp_100.a) );
 			float4 __mainColor = ( _Color.rgba );
 			float __alpha = ( __albedo.a * __mainColor.a );
 			output.__rampThreshold = ( _RampThreshold );
@@ -216,7 +216,6 @@ Shader "Toony Colors Pro 2/Examples/SG2/Detail Texture"
 
 				color.rgb += ambient;
 			#endif
-
 			return color;
 		}
 
@@ -239,5 +238,5 @@ Shader "Toony Colors Pro 2/Examples/SG2/Detail Texture"
 	CustomEditor "ToonyColorsPro.ShaderGenerator.MaterialInspector_SG2"
 }
 
-/* TCP_DATA u config(ver:"2.4.0";tmplt:"SG2_Template_Default";features:list["UNITY_5_4","UNITY_5_5","BUMP","PARALLAX"];flags:list[];keywords:dict[RENDER_TYPE="Opaque",RampTextureDrawer="[TCP2Gradient]",RampTextureLabel="Ramp Texture",SHADER_TARGET="3.0"];shaderProperties:list[sp(name:"Albedo";imps:list[imp_customcode(code:"lerp({2}.rgba, {3}.rgba, {3}.a)";op:Multiply;lbl:"Albedo";gpu_inst:False;locked:False;impl_index:-1),imp_mp_texture(guid:"99c71125-3b44-4e0d-b337-f81343e3dcfd";uto:True;tov:"";gto:True;sbt:False;scr:False;scv:"";gsc:False;roff:False;goff:False;notile:False;def:"white";locked_uv:False;uv:0;cc:4;chan:"RGBA";mip:-1;mipprop:False;ssuv:False;ssuv_vert:False;ssuv_obj:False;prop:"_MainTex";md:"";custom:False;refs:"";op:Multiply;lbl:"Albedo";gpu_inst:False;locked:False;impl_index:0),imp_ct(lct:"_DetailTex";cc:4;chan:"RGBA";avchan:"RGBA";op:Multiply;lbl:"Detail";gpu_inst:False;locked:False;impl_index:-1)]),,,,,,,,sp(name:"Normal Map";imps:list[imp_customcode(code:"lerp({2}.rgba, {3}.rgba, {4}.a)";op:Multiply;lbl:"Normal Map";gpu_inst:False;locked:False;impl_index:-1),imp_mp_texture(guid:"99c71125-3b44-4e0d-b337-f81343e3dcfd";uto:True;tov:"";gto:True;sbt:False;scr:False;scv:"";gsc:False;roff:False;goff:False;notile:False;def:"bump";locked_uv:False;uv:0;cc:4;chan:"RGBA";mip:-1;mipprop:False;ssuv:False;ssuv_vert:False;ssuv_obj:False;prop:"_NormalMap";md:"";custom:False;refs:"";op:Multiply;lbl:"Normal Map Texture";gpu_inst:False;locked:False;impl_index:-1),imp_mp_texture(guid:"dff3efe8-6675-4101-a9f6-05f8a7d9a439";uto:True;tov:"";gto:False;sbt:False;scr:False;scv:"";gsc:False;roff:False;goff:False;notile:False;def:"white";locked_uv:False;uv:0;cc:4;chan:"RGBA";mip:-1;mipprop:False;ssuv:False;ssuv_vert:False;ssuv_obj:False;prop:"_DetailNormalMap";md:"";custom:False;refs:"";op:Multiply;lbl:"Detail Normal Map";gpu_inst:False;locked:False;impl_index:-1),imp_ct(lct:"_DetailTex";cc:4;chan:"RGBA";avchan:"RGBA";op:Multiply;lbl:"Normal Map";gpu_inst:False;locked:False;impl_index:-1)])];customTextures:list[ct(cimp:imp_mp_texture(guid:"d9bdb63a-02a4-4d35-8e12-75d4d0d0152f";uto:True;tov:"";gto:False;sbt:False;scr:False;scv:"";gsc:False;roff:False;goff:False;notile:False;def:"white";locked_uv:False;uv:0;cc:4;chan:"RGBA";mip:0;mipprop:False;ssuv:False;ssuv_vert:False;ssuv_obj:False;prop:"_DetailTex";md:"";custom:True;refs:"Albedo, Normal Map";op:Multiply;lbl:"Detail Map";gpu_inst:False;locked:False;impl_index:-1);exp:False;uv_exp:False;imp_lbl:"Texture")]) */
-/* TCP_HASH 83d3a942c34849587b394f4f14161939 */
+/* TCP_DATA u config(unity:"2021.3.3f1";ver:"2.4.0";tmplt:"SG2_Template_Default";features:list["UNITY_5_4","UNITY_5_5","BUMP","PARALLAX","UNITY_5_6","UNITY_2017_1","UNITY_2018_1","UNITY_2018_2","UNITY_2018_3","UNITY_2019_1","UNITY_2019_2","UNITY_2019_3"];flags:list[];keywords:dict[RENDER_TYPE="Opaque",RampTextureDrawer="[TCP2Gradient]",RampTextureLabel="Ramp Texture",SHADER_TARGET="3.0"];shaderProperties:list[sp(name:"Albedo";imps:list[imp_customcode(prepend_type:Disabled;prepend_code:"";prepend_file:"";prepend_file_block:"";preprend_params:dict[];code:"lerp({2}.rgba, {3}.rgba, {3}.a)";guid:"899045ef-037f-4d63-b61e-de1635314c95";op:Multiply;lbl:"Albedo";gpu_inst:False;locked:False;impl_index:-1),imp_mp_texture(uto:True;tov:"";gto:True;sbt:False;scr:False;scv:"";gsc:False;roff:False;goff:False;notile:False;def:"white";locked_uv:False;uv:0;cc:4;chan:"RGBA";mip:-1;mipprop:False;ssuv:False;ssuv_vert:False;ssuv_obj:False;prop:"_MainTex";md:"";custom:False;refs:"";guid:"99c71125-3b44-4e0d-b337-f81343e3dcfd";op:Multiply;lbl:"Albedo";gpu_inst:False;locked:False;impl_index:0),imp_ct(lct:"_DetailTex";cc:4;chan:"RGBA";avchan:"RGBA";guid:"5cf54115-a874-4926-b7b5-815028bdf6ae";op:Multiply;lbl:"Detail";gpu_inst:False;locked:False;impl_index:-1)]),,,,,,,,sp(name:"Normal Map";imps:list[imp_customcode(prepend_type:Disabled;prepend_code:"";prepend_file:"";prepend_file_block:"";preprend_params:dict[];code:"lerp({2}.rgba, {3}.rgba, {4}.a)";guid:"36d9272c-40be-4dd7-a78f-f3a2052b458e";op:Multiply;lbl:"Normal Map";gpu_inst:False;locked:False;impl_index:-1),imp_mp_texture(uto:True;tov:"";gto:True;sbt:False;scr:False;scv:"";gsc:False;roff:False;goff:False;notile:False;def:"bump";locked_uv:False;uv:0;cc:4;chan:"RGBA";mip:-1;mipprop:False;ssuv:False;ssuv_vert:False;ssuv_obj:False;prop:"_NormalMap";md:"";custom:False;refs:"";guid:"99c71125-3b44-4e0d-b337-f81343e3dcfd";op:Multiply;lbl:"Normal Map Texture";gpu_inst:False;locked:False;impl_index:-1),imp_mp_texture(uto:True;tov:"";gto:False;sbt:False;scr:False;scv:"";gsc:False;roff:False;goff:False;notile:False;def:"white";locked_uv:False;uv:0;cc:4;chan:"RGBA";mip:-1;mipprop:False;ssuv:False;ssuv_vert:False;ssuv_obj:False;prop:"_DetailNormalMap";md:"";custom:False;refs:"";guid:"dff3efe8-6675-4101-a9f6-05f8a7d9a439";op:Multiply;lbl:"Detail Normal Map";gpu_inst:False;locked:False;impl_index:-1),imp_ct(lct:"_DetailTex";cc:4;chan:"RGBA";avchan:"RGBA";guid:"b79a7b8f-8853-4de3-90c6-00608d1259aa";op:Multiply;lbl:"Normal Map";gpu_inst:False;locked:False;impl_index:-1)])];customTextures:list[ct(cimp:imp_mp_texture(uto:True;tov:"";gto:False;sbt:False;scr:False;scv:"";gsc:False;roff:False;goff:False;notile:False;def:"white";locked_uv:False;uv:0;cc:4;chan:"RGBA";mip:0;mipprop:False;ssuv:False;ssuv_vert:False;ssuv_obj:False;prop:"_DetailTex";md:"";custom:True;refs:"Albedo, Normal Map";guid:"d9bdb63a-02a4-4d35-8e12-75d4d0d0152f";op:Multiply;lbl:"Detail Map";gpu_inst:False;locked:False;impl_index:-1);exp:False;uv_exp:False;imp_lbl:"Texture")]) */
+/* TCP_HASH bbfedb8eb6dced4a97db0a058c746321 */

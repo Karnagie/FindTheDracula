@@ -32,8 +32,16 @@ namespace PlayerEssence.ChoosableEquipmentEssence
                 int i = 0;
                 foreach (var index in _tools)
                 {
+                    if(i == 0)
+                    {
+                        i++;
+                        continue;
+                    }
                     if(!_saveAndLoad.IsOpenedEquipment(i))
+                    {
                         free.Add(i);
+                        Debug.Log(i);
+                    }
                     i++;
                 }
                 opening = free[Random.Range(0, free.Count)];
