@@ -55,7 +55,7 @@ namespace GameEssence
             if (_kills == _vampires.Length)
             {
                 Debug.Log("To wait");
-                await Task.Delay(1000);
+                await Task.Delay(2000);
                 Debug.Log("To return");
                 await _player.ReturnToPosition();
                 GoToPuzzle();

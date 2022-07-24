@@ -168,6 +168,8 @@ Shader "Toony Colors Pro 2/User/TCP2 Shader 0"
 			#pragma multi_compile _ _MIXED_LIGHTING_SUBTRACTIVE
 
 			// -------------------------------------
+			#pragma multi_compile _ DIRLIGHTMAP_COMBINED
+			#pragma multi_compile _ LIGHTMAP_ON
 
 			//--------------------------------------
 			// GPU Instancing
@@ -203,6 +205,7 @@ Shader "Toony Colors Pro 2/User/TCP2 Shader 0"
 				float4 vertex       : POSITION;
 				float3 normal       : NORMAL;
 				float4 tangent      : TANGENT;
+				float2 uvLM         : TEXCOORD1;
 				float4 texcoord0 : TEXCOORD0;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
@@ -221,7 +224,7 @@ Shader "Toony Colors Pro 2/User/TCP2 Shader 0"
 			#endif
 				float3 pack0 : TEXCOORD3; /* pack0.xyz = tangent */
 				float3 pack1 : TEXCOORD4; /* pack1.xyz = bitangent */
-				float2 pack2 : TEXCOORD5; /* pack2.xy = texcoord0 */
+				float4 pack2 : TEXCOORD5; /* pack2.xy = texcoord0  pack2.zw = uvLM */
 			};
 
 			Varyings Vertex(Attributes input)
@@ -230,6 +233,7 @@ Shader "Toony Colors Pro 2/User/TCP2 Shader 0"
 
 				// Texture Coordinates
 				output.pack2.xy.xy = input.texcoord0.xy * _BaseMap_ST.xy + _BaseMap_ST.zw;
+				output.pack2.zw = input.uvLM.xy * unity_LightmapST.xy + unity_LightmapST.zw;
 
 				VertexPositionInputs vertexInput = GetVertexPositionInputs(input.vertex.xyz);
 			#ifdef _MAIN_LIGHT_SHADOWS
@@ -362,9 +366,14 @@ Shader "Toony Colors Pro 2/User/TCP2 Shader 0"
 				color += albedo * accumulatedRamp;
 
 				// ambient or lightmap
+			#ifdef LIGHTMAP_ON
+				// Normal is required in case Directional lightmaps are baked
+				half3 bakedGI = SampleLightmap(input.pack2.zw, normalWS);
+			#else
 				// Samples SH fully per-pixel. SampleSHVertex and SampleSHPixel functions
 				// are also defined in case you want to sample some terms per-vertex.
 				half3 bakedGI = SampleSH(normalWS);
+			#endif
 				half occlusion = 1;
 				half3 indirectDiffuse = bakedGI;
 				indirectDiffuse *= occlusion * albedo * __ambientIntensity;
@@ -543,5 +552,5 @@ Shader "Toony Colors Pro 2/User/TCP2 Shader 0"
 	CustomEditor "ToonyColorsPro.ShaderGenerator.MaterialInspector_SG2"
 }
 
-/* TCP_DATA u config(unity:"2021.3.3f1";ver:"2.4.2";tmplt:"SG2_Template_URP";features:list["UNITY_5_4","UNITY_5_5","UNITY_5_6","UNITY_2017_1","UNITY_2018_1","UNITY_2018_2","UNITY_2018_3","UNITY_2019_1","UNITY_2019_2","UNITY_2019_3","SHADOW_HSV","EMISSION","ALBEDO_HSV","BUMP","TEMPLATE_LWRP"];flags:list[];keywords:dict[RENDER_TYPE="Opaque",RampTextureDrawer="[TCP2Gradient]",RampTextureLabel="Ramp Texture",SHADER_TARGET="3.0",RIM_LABEL="Rim Lighting"];shaderProperties:list[,,,,,,,,,,,,,,,,,,sp(name:"Emission";imps:list[imp_mp_texture(uto:False;tov:"";gto:False;sbt:False;scr:False;scv:"";gsc:False;roff:False;goff:False;notile:False;def:"white";locked_uv:False;uv:0;cc:3;chan:"RGB";mip:-1;mipprop:False;ssuv:False;ssuv_vert:False;ssuv_obj:False;prop:"_Emission";md:"";custom:False;refs:"";guid:"baafdd84-de2f-4711-a63f-7eebd8998b4f";op:Multiply;lbl:"Emission Color";gpu_inst:False;locked:False;impl_index:-1)])];customTextures:list[]) */
-/* TCP_HASH 9123f461f0a5200818360f75493fd723 */
+/* TCP_DATA u config(unity:"2021.3.3f1";ver:"2.4.2";tmplt:"SG2_Template_URP";features:list["UNITY_5_4","UNITY_5_5","UNITY_5_6","UNITY_2017_1","UNITY_2018_1","UNITY_2018_2","UNITY_2018_3","UNITY_2019_1","UNITY_2019_2","UNITY_2019_3","SHADOW_HSV","EMISSION","ALBEDO_HSV","BUMP","TEMPLATE_LWRP","ENABLE_LIGHTMAP"];flags:list[];keywords:dict[RENDER_TYPE="Opaque",RampTextureDrawer="[TCP2Gradient]",RampTextureLabel="Ramp Texture",SHADER_TARGET="3.0",RIM_LABEL="Rim Lighting"];shaderProperties:list[,,,,,,,,,,,,,,sp(name:"Emission";imps:list[imp_mp_texture(uto:False;tov:"";gto:False;sbt:False;scr:False;scv:"";gsc:False;roff:False;goff:False;notile:False;def:"white";locked_uv:False;uv:0;cc:3;chan:"RGB";mip:-1;mipprop:False;ssuv:False;ssuv_vert:False;ssuv_obj:False;prop:"_Emission";md:"";custom:False;refs:"";guid:"baafdd84-de2f-4711-a63f-7eebd8998b4f";op:Multiply;lbl:"Emission Color";gpu_inst:False;locked:False;impl_index:-1)])];customTextures:list[]) */
+/* TCP_HASH 2d3bc1ed76866541a586c5b6d9707aae */
