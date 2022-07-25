@@ -85,7 +85,7 @@ Material:
     - _SunAlpha: 550
     - _SunAltitude: 38
     - _SunAzimuth: 20
-    - _SunBeta: 1
+    - _SunBeta: 100
     - _SunIntensity: 2
     - _UVSec: 0
     - _ZWrite: 1

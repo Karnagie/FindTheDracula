@@ -48,6 +48,11 @@ namespace PlayerEssence
             _deltaAngle = 0;
             _isWorking = true;
         }
+
+        public void ResetStartAngle()
+        {
+            _startRotateAngle = transform.eulerAngles.y;
+        }
         
         public void TurnOffUI()
         {

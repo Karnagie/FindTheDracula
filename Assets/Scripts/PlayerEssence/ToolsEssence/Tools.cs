@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Core.InputEssence;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace PlayerEssence.ToolsEssence
 {
@@ -26,6 +28,10 @@ namespace PlayerEssence.ToolsEssence
 
         public void Init()
         {
+            _rotator.gameObject.SetActive(true);
+            _toolParent.gameObject.SetActive(true);
+            _weaponParent.gameObject.SetActive(true);
+            
             _buttonOnPanelTool.gameObject.SetActive(false);
             _buttonOnPanel.onClick.AddListener((() =>
             {

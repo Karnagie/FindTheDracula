@@ -13,7 +13,10 @@ namespace GameEssence
 {
     public class Game : MonoBehaviour, IGameStateHandler
     {
+        [SerializeField] private int[] _targetsOnRoom;
+        
         [SerializeField] private PlayableDirector _timeline;
+        [SerializeField] private PlayableDirector[] _rooms;
         [SerializeField] private PlayableDirector _toPuzzle;
         [SerializeField] private PlayableDirector _win;
 
@@ -21,6 +24,7 @@ namespace GameEssence
 
         private Vampire[] _vampires;
         private int _kills;
+        private int _currentRoom;
 
         [Inject] private Player _player;
 
@@ -52,6 +56,13 @@ namespace GameEssence
         private async void OnVampireKill()
         {
             _kills++;
+            if (_kills == _targetsOnRoom[_currentRoom] && _kills != _vampires.Length)
+            {
+                await Task.Delay(2000);
+                await _player.ReturnToPosition();
+                GoToRoom(_currentRoom);
+                _currentRoom++;
+            }
             if (_kills == _vampires.Length)
             {
                 Debug.Log("To wait");
@@ -60,6 +71,12 @@ namespace GameEssence
                 await _player.ReturnToPosition();
                 GoToPuzzle();
             }
+        }
+        
+        public void GoToRoom(int index)
+        {
+            Debug.Log($"To room {index}");
+            _rooms[index].Play();
         }
 
         public void GoToPuzzle()

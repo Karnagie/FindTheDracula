@@ -5,6 +5,7 @@ using DG.Tweening;
 using PlayerEssence.ChoosableEquipmentEssence;
 using PlayerEssence.ToolsEssence;
 using PlayerEssence.WeaponEssence;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using WeaponsEssence;
@@ -19,6 +20,7 @@ namespace UI
         [SerializeField] private float _fillSpeed = 2f;
         [SerializeField] private float _fillAmount = 0.25f;
         [SerializeField] private ParticleSystem[] _onGetting;
+        [SerializeField] private TMP_Text _percents;
 
         [SerializeField] private FillObject[] _weapons;
         [SerializeField] private FillObject[] _tools;
@@ -36,6 +38,7 @@ namespace UI
 
         public override async void Animate()
         {
+            Debug.Log($"start animating");
             try
             {
                 Debug.Log($"Start animating {_inventory.IsAllFilled()} {_saveAndLoad.GetCurrentEquipmentOpening()}");
@@ -65,6 +68,7 @@ namespace UI
                     if(_saveAndLoad.FillWeaponPercent() >= 1)
                     {
                         Debug.Log($"create weapon");
+                        _percents.text = "100%";
                         WeaponTool tool = _inventory.Get(_saveAndLoad.GetCurrentWeaponOpening());
                         tool.SetParent(transform);
                         tool.transform.localScale = Vector3.one*500;
@@ -84,6 +88,12 @@ namespace UI
                         while (_image.fillAmount <= _saveAndLoad.FillWeaponPercent() )
                         {
                             _image.fillAmount += _fillSpeed * Time.deltaTime;
+                            string per = (_image.fillAmount*100).ToString();
+                            if (per.Length > 3)
+                            {
+                                per = per.Remove(3, per.Length-4);
+                            }
+                            _percents.text = per+"%";
                             _weapons[_saveAndLoad.GetCurrentWeaponOpening()].Fill(_image.fillAmount);
                             await Task.Yield();
                         }
@@ -115,6 +125,7 @@ namespace UI
                     if(_saveAndLoad.FillEquipmentPercent() >= 1)
                     {
                         Debug.Log($"create Equipment");
+                        _percents.text = "100%";
                         Tool tool = _equipmentInventory.Get(_saveAndLoad.GetCurrentEquipmentOpening());
                         tool.SetParent(transform);
                         tool.transform.localScale = Vector3.one*500;
@@ -134,6 +145,12 @@ namespace UI
                         while (_image.fillAmount <= _saveAndLoad.FillEquipmentPercent() )
                         {
                             _image.fillAmount += _fillSpeed * Time.deltaTime;
+                            string per = (_image.fillAmount*100).ToString();
+                            if (per.Length > 3)
+                            {
+                                per = per.Remove(3, per.Length-4);
+                            }
+                            _percents.text = per+"%";
                             _tools[_saveAndLoad.GetCurrentEquipmentOpening()].Fill(_image.fillAmount);
                             await Task.Yield();
                         }
