@@ -12,6 +12,10 @@ GameObject:
   - component: {fileID: 499488433}
   - component: {fileID: 499488432}
   - component: {fileID: 499488431}
+  - component: {fileID: 4595322786130983438}
+  - component: {fileID: 7097552703726921686}
+  - component: {fileID: 5680935169024215195}
+  - component: {fileID: 3248364107120098925}
   m_Layer: 0
   m_Name: MainUI
   m_TagString: Untagged
@@ -105,6 +109,73 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &4595322786130983438
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499488429}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &7097552703726921686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499488429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c1cb4c947a244849f982f7506260f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _propagateToChildren: 1
+  _disableOnAwake: 0
+  _hideDelay: 0.3
+  _inAnimations:
+  - {fileID: 3248364107120098925}
+  _outAnimations:
+  - {fileID: 5680935169024215195}
+--- !u!114 &5680935169024215195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499488429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6791b5e85a4afcf458fb75c38c502d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 0.3
+  _delay: 0
+  _ease: 6
+  _targetOpacity: 0
+  _setInitial: 0
+  _initialOpacity: 1
+--- !u!114 &3248364107120098925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499488429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6791b5e85a4afcf458fb75c38c502d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 0.3
+  _delay: 0
+  _ease: 6
+  _targetOpacity: 1
+  _setInitial: 0
+  _initialOpacity: 1
 --- !u!1 &695083685
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,6 +263,10 @@ GameObject:
   - component: {fileID: 1413669757}
   - component: {fileID: 1413669756}
   - component: {fileID: 1413669755}
+  - component: {fileID: 6034826716421116082}
+  - component: {fileID: 7616263794330617761}
+  - component: {fileID: 4481482485657633198}
+  - component: {fileID: 4733583157416082747}
   m_Layer: 0
   m_Name: Play
   m_TagString: Untagged
@@ -314,10 +389,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 499488429}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 7097552703726921686}
+        m_TargetAssemblyTypeName: SnackersUI.TweenAnimatedUIElement, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -326,6 +401,73 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!225 &6034826716421116082
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413669753}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &7616263794330617761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413669753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c1cb4c947a244849f982f7506260f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _propagateToChildren: 0
+  _disableOnAwake: 0
+  _hideDelay: 0.3
+  _inAnimations:
+  - {fileID: 4481482485657633198}
+  _outAnimations:
+  - {fileID: 4733583157416082747}
+--- !u!114 &4481482485657633198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413669753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6791b5e85a4afcf458fb75c38c502d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 0.3
+  _delay: 0
+  _ease: 6
+  _targetOpacity: 1
+  _setInitial: 0
+  _initialOpacity: 1
+--- !u!114 &4733583157416082747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413669753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6791b5e85a4afcf458fb75c38c502d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 0.3
+  _delay: 0
+  _ease: 6
+  _targetOpacity: 0
+  _setInitial: 0
+  _initialOpacity: 1
 --- !u!1 &1568518369
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,6 +629,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1571186477}
   - component: {fileID: 1571186478}
+  - component: {fileID: 2799697608295840012}
+  - component: {fileID: 1739708399506631255}
+  - component: {fileID: 5357802619927801951}
   m_Layer: 0
   m_Name: WeaponPosition
   m_TagString: Untagged
@@ -503,7 +648,7 @@ RectTransform:
   m_GameObject: {fileID: 1571186476}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6738418327075888389}
@@ -532,6 +677,61 @@ MonoBehaviour:
   - {fileID: 7403613684299015925, guid: d56dbed630760f44699d3826dec2276a, type: 3}
   _parent: {fileID: 1571186477}
   _isEquipment: 0
+--- !u!114 &2799697608295840012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571186476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c1cb4c947a244849f982f7506260f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _propagateToChildren: 0
+  _disableOnAwake: 0
+  _hideDelay: 0.3
+  _inAnimations:
+  - {fileID: 1739708399506631255}
+  _outAnimations:
+  - {fileID: 5357802619927801951}
+--- !u!114 &1739708399506631255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571186476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1ce987072884604f8de86e623b99f80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 0.3
+  _delay: 0
+  _ease: 6
+  _targetScale: {x: 1, y: 1, z: 1}
+  _targetScaleMultiplier: 1
+  _from: 0
+--- !u!114 &5357802619927801951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571186476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1ce987072884604f8de86e623b99f80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 0.3
+  _delay: 0
+  _ease: 6
+  _targetScale: {x: 0, y: 0, z: 0}
+  _targetScaleMultiplier: 1
+  _from: 0
 --- !u!1 &18163083304036260
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,6 +1200,9 @@ GameObject:
   - component: {fileID: 6546443500584832032}
   - component: {fileID: 5227621261628558758}
   - component: {fileID: 645493814714219270}
+  - component: {fileID: 7946425636442985062}
+  - component: {fileID: 3150124614102073497}
+  - component: {fileID: 8811760687316614347}
   m_Layer: 0
   m_Name: WeaponPanel
   m_TagString: Untagged
@@ -1016,7 +1219,7 @@ RectTransform:
   m_GameObject: {fileID: 1854560463472028565}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8985800276576593317}
@@ -1094,6 +1297,61 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &7946425636442985062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854560463472028565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c1cb4c947a244849f982f7506260f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _propagateToChildren: 0
+  _disableOnAwake: 0
+  _hideDelay: 0.3
+  _inAnimations:
+  - {fileID: 3150124614102073497}
+  _outAnimations:
+  - {fileID: 8811760687316614347}
+--- !u!114 &3150124614102073497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854560463472028565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1ce987072884604f8de86e623b99f80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 0.3
+  _delay: 0
+  _ease: 6
+  _targetScale: {x: 1, y: 1, z: 1}
+  _targetScaleMultiplier: 1
+  _from: 0
+--- !u!114 &8811760687316614347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854560463472028565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1ce987072884604f8de86e623b99f80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 0.3
+  _delay: 0
+  _ease: 6
+  _targetScale: {x: 0, y: 0, z: 0}
+  _targetScaleMultiplier: 1
+  _from: 0
 --- !u!1 &2059091754296182652
 GameObject:
   m_ObjectHideFlags: 0
@@ -1182,6 +1440,10 @@ GameObject:
   - component: {fileID: 2298022791882989030}
   - component: {fileID: 6673848474201844318}
   - component: {fileID: 6625763989610465099}
+  - component: {fileID: 8436314804994762885}
+  - component: {fileID: 5150175870907012687}
+  - component: {fileID: 2118350443795742951}
+  - component: {fileID: 8465497924813580549}
   m_Layer: 0
   m_Name: Equipments
   m_TagString: Untagged
@@ -1292,10 +1554,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5342256391040679476}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 5356175936470787044}
+        m_TargetAssemblyTypeName: SnackersUI.TweenAnimatedUIElement, Assembly-CSharp
+        m_MethodName: Show
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1304,10 +1566,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 2135192653374060201}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 5150175870907012687}
+        m_TargetAssemblyTypeName: SnackersUI.TweenAnimatedUIElement, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1316,10 +1578,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6920546413933366016}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 482890315298509860}
+        m_TargetAssemblyTypeName: SnackersUI.TweenAnimatedUIElement, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1328,6 +1590,85 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7616263794330617761}
+        m_TargetAssemblyTypeName: SnackersUI.TweenAnimatedUIElement, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!225 &8436314804994762885
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135192653374060201}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &5150175870907012687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135192653374060201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c1cb4c947a244849f982f7506260f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _propagateToChildren: 0
+  _disableOnAwake: 0
+  _hideDelay: 0.3
+  _inAnimations:
+  - {fileID: 2118350443795742951}
+  _outAnimations:
+  - {fileID: 8465497924813580549}
+--- !u!114 &2118350443795742951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135192653374060201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6791b5e85a4afcf458fb75c38c502d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 0.3
+  _delay: 0
+  _ease: 6
+  _targetOpacity: 1
+  _setInitial: 0
+  _initialOpacity: 1
+--- !u!114 &8465497924813580549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135192653374060201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6791b5e85a4afcf458fb75c38c502d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 0.3
+  _delay: 0
+  _ease: 6
+  _targetOpacity: 0
+  _setInitial: 0
+  _initialOpacity: 1
 --- !u!1 &2224742453481277183
 GameObject:
   m_ObjectHideFlags: 0
@@ -1340,6 +1681,9 @@ GameObject:
   - component: {fileID: 6532940267485496155}
   - component: {fileID: 8529937189359748272}
   - component: {fileID: 3982501382911273216}
+  - component: {fileID: 1310840617661371917}
+  - component: {fileID: 8472633439562696943}
+  - component: {fileID: 1818068560902050909}
   m_Layer: 0
   m_Name: WeaponPanel
   m_TagString: Untagged
@@ -1356,7 +1700,7 @@ RectTransform:
   m_GameObject: {fileID: 2224742453481277183}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7416139096947845955}
@@ -1434,6 +1778,61 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1310840617661371917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2224742453481277183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c1cb4c947a244849f982f7506260f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _propagateToChildren: 0
+  _disableOnAwake: 0
+  _hideDelay: 0.3
+  _inAnimations:
+  - {fileID: 8472633439562696943}
+  _outAnimations:
+  - {fileID: 1818068560902050909}
+--- !u!114 &8472633439562696943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2224742453481277183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1ce987072884604f8de86e623b99f80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 0.3
+  _delay: 0
+  _ease: 6
+  _targetScale: {x: 1, y: 1, z: 1}
+  _targetScaleMultiplier: 1
+  _from: 0
+--- !u!114 &1818068560902050909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2224742453481277183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1ce987072884604f8de86e623b99f80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 0.3
+  _delay: 0
+  _ease: 6
+  _targetScale: {x: 0, y: 0, z: 0}
+  _targetScaleMultiplier: 1
+  _from: 0
 --- !u!1 &2314210361223586232
 GameObject:
   m_ObjectHideFlags: 0
@@ -2148,22 +2547,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2135192653374060201}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 5342256391040679476}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 5356175936470787044}
+        m_TargetAssemblyTypeName: SnackersUI.TweenAnimatedUIElement, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2172,10 +2559,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6920546413933366016}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 5150175870907012687}
+        m_TargetAssemblyTypeName: SnackersUI.TweenAnimatedUIElement, Assembly-CSharp
+        m_MethodName: Show
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 482890315298509860}
+        m_TargetAssemblyTypeName: SnackersUI.TweenAnimatedUIElement, Assembly-CSharp
+        m_MethodName: Show
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 7616263794330617761}
+        m_TargetAssemblyTypeName: SnackersUI.TweenAnimatedUIElement, Assembly-CSharp
+        m_MethodName: Show
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2588,6 +2999,9 @@ GameObject:
   m_Component:
   - component: {fileID: 240963614529302597}
   - component: {fileID: 1233667484051902200}
+  - component: {fileID: 2064267210723981476}
+  - component: {fileID: 7007414032194594843}
+  - component: {fileID: 3046126792938354915}
   m_Layer: 0
   m_Name: WeaponPosition
   m_TagString: Untagged
@@ -2604,7 +3018,7 @@ RectTransform:
   m_GameObject: {fileID: 4551767573748198684}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4566417448484120298}
@@ -2633,6 +3047,61 @@ MonoBehaviour:
   - {fileID: 2337656261321516580, guid: d7de3360b8a21ea4f8a5511ab1f8d470, type: 3}
   _parent: {fileID: 240963614529302597}
   _isEquipment: 1
+--- !u!114 &2064267210723981476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4551767573748198684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c1cb4c947a244849f982f7506260f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _propagateToChildren: 0
+  _disableOnAwake: 0
+  _hideDelay: 0.3
+  _inAnimations:
+  - {fileID: 7007414032194594843}
+  _outAnimations:
+  - {fileID: 3046126792938354915}
+--- !u!114 &7007414032194594843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4551767573748198684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1ce987072884604f8de86e623b99f80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 0.3
+  _delay: 0
+  _ease: 6
+  _targetScale: {x: 1, y: 1, z: 1}
+  _targetScaleMultiplier: 1
+  _from: 0
+--- !u!114 &3046126792938354915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4551767573748198684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1ce987072884604f8de86e623b99f80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 0.3
+  _delay: 0
+  _ease: 6
+  _targetScale: {x: 0, y: 0, z: 0}
+  _targetScaleMultiplier: 1
+  _from: 0
 --- !u!1 &4592434348456215585
 GameObject:
   m_ObjectHideFlags: 0
@@ -3092,6 +3561,10 @@ GameObject:
   - component: {fileID: 4566417448484120298}
   - component: {fileID: 8065960917727012076}
   - component: {fileID: 8050106646613356466}
+  - component: {fileID: 3159608847047349645}
+  - component: {fileID: 5356175936470787044}
+  - component: {fileID: 7338013376027891687}
+  - component: {fileID: 4584286582748389078}
   m_Layer: 0
   m_Name: Panel (1)
   m_TagString: Untagged
@@ -3165,6 +3638,73 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &3159608847047349645
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5342256391040679476}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &5356175936470787044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5342256391040679476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c1cb4c947a244849f982f7506260f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _propagateToChildren: 1
+  _disableOnAwake: 0
+  _hideDelay: 0.3
+  _inAnimations:
+  - {fileID: 7338013376027891687}
+  _outAnimations:
+  - {fileID: 4584286582748389078}
+--- !u!114 &7338013376027891687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5342256391040679476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6791b5e85a4afcf458fb75c38c502d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 0.3
+  _delay: 0
+  _ease: 6
+  _targetOpacity: 1
+  _setInitial: 0
+  _initialOpacity: 0
+--- !u!114 &4584286582748389078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5342256391040679476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6791b5e85a4afcf458fb75c38c502d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 0.3
+  _delay: 0
+  _ease: 6
+  _targetOpacity: 0
+  _setInitial: 0
+  _initialOpacity: 1
 --- !u!1 &6446962716671707213
 GameObject:
   m_ObjectHideFlags: 0
@@ -4225,6 +4765,10 @@ GameObject:
   - component: {fileID: 9052164063340263929}
   - component: {fileID: 3144294159384045788}
   - component: {fileID: 8614863577469036542}
+  - component: {fileID: 3027138036494527277}
+  - component: {fileID: 482890315298509860}
+  - component: {fileID: 765616778976162464}
+  - component: {fileID: 6456802367051009791}
   m_Layer: 0
   m_Name: Weapons
   m_TagString: Untagged
@@ -4335,10 +4879,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9112943248424641142}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1536601239078146551}
+        m_TargetAssemblyTypeName: SnackersUI.TweenAnimatedUIElement, Assembly-CSharp
+        m_MethodName: Show
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4347,10 +4891,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 6920546413933366016}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 482890315298509860}
+        m_TargetAssemblyTypeName: SnackersUI.TweenAnimatedUIElement, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4359,10 +4903,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2135192653374060201}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 5150175870907012687}
+        m_TargetAssemblyTypeName: SnackersUI.TweenAnimatedUIElement, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4371,6 +4915,85 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7616263794330617761}
+        m_TargetAssemblyTypeName: SnackersUI.TweenAnimatedUIElement, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!225 &3027138036494527277
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6920546413933366016}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &482890315298509860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6920546413933366016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c1cb4c947a244849f982f7506260f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _propagateToChildren: 0
+  _disableOnAwake: 0
+  _hideDelay: 0.3
+  _inAnimations:
+  - {fileID: 765616778976162464}
+  _outAnimations:
+  - {fileID: 6456802367051009791}
+--- !u!114 &765616778976162464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6920546413933366016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6791b5e85a4afcf458fb75c38c502d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 0.3
+  _delay: 0
+  _ease: 6
+  _targetOpacity: 1
+  _setInitial: 0
+  _initialOpacity: 1
+--- !u!114 &6456802367051009791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6920546413933366016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6791b5e85a4afcf458fb75c38c502d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 0.3
+  _delay: 0
+  _ease: 6
+  _targetOpacity: 0
+  _setInitial: 0
+  _initialOpacity: 1
 --- !u!1 &7153002005440457181
 GameObject:
   m_ObjectHideFlags: 0
@@ -5099,10 +5722,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6920546413933366016}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 482890315298509860}
+        m_TargetAssemblyTypeName: SnackersUI.TweenAnimatedUIElement, Assembly-CSharp
+        m_MethodName: Show
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5111,10 +5734,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 2135192653374060201}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 5150175870907012687}
+        m_TargetAssemblyTypeName: SnackersUI.TweenAnimatedUIElement, Assembly-CSharp
+        m_MethodName: Show
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5123,10 +5746,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 9112943248424641142}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1536601239078146551}
+        m_TargetAssemblyTypeName: SnackersUI.TweenAnimatedUIElement, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7616263794330617761}
+        m_TargetAssemblyTypeName: SnackersUI.TweenAnimatedUIElement, Assembly-CSharp
+        m_MethodName: Show
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5425,6 +6060,10 @@ GameObject:
   - component: {fileID: 6738418327075888389}
   - component: {fileID: 1013154095743915885}
   - component: {fileID: 8903904892089504529}
+  - component: {fileID: 7309717865315269869}
+  - component: {fileID: 1536601239078146551}
+  - component: {fileID: 2504655236790655093}
+  - component: {fileID: 7823554903977583402}
   m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
@@ -5498,6 +6137,73 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &7309717865315269869
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9112943248424641142}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &1536601239078146551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9112943248424641142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c1cb4c947a244849f982f7506260f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _propagateToChildren: 1
+  _disableOnAwake: 0
+  _hideDelay: 0.3
+  _inAnimations:
+  - {fileID: 2504655236790655093}
+  _outAnimations:
+  - {fileID: 7823554903977583402}
+--- !u!114 &2504655236790655093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9112943248424641142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6791b5e85a4afcf458fb75c38c502d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 0.3
+  _delay: 0
+  _ease: 6
+  _targetOpacity: 1
+  _setInitial: 0
+  _initialOpacity: 0
+--- !u!114 &7823554903977583402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9112943248424641142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6791b5e85a4afcf458fb75c38c502d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 0.3
+  _delay: 0
+  _ease: 6
+  _targetOpacity: 0
+  _setInitial: 0
+  _initialOpacity: 1
 --- !u!1 &9221635717146087101
 GameObject:
   m_ObjectHideFlags: 0

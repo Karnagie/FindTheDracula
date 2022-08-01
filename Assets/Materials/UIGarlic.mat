@@ -93,15 +93,15 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _FillAmount: 0.2457433
-    - _FillProgress: 0.28
+    - _FillAmount: 1
+    - _FillProgress: 0.47
     - _Float: 0
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _Offset: -0.2
+    - _Offset: -0.35
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0

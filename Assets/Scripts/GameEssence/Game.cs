@@ -21,6 +21,7 @@ namespace GameEssence
         [SerializeField] private PlayableDirector _win;
 
         [SerializeField] private WinPanel _losePanel;
+        [SerializeField] private FillImage _fill;
 
         private Vampire[] _vampires;
         private int _kills;
@@ -28,9 +29,12 @@ namespace GameEssence
 
         [Inject] private Player _player;
 
+        public event Action VampireKill;
+
         private void Awake()
         {
             EventBus.Subscribe(this);
+            _fill.Init();
         }
 
         private void Start()
@@ -56,9 +60,11 @@ namespace GameEssence
         private async void OnVampireKill()
         {
             _kills++;
+            VampireKill?.Invoke();
             if (_kills == _targetsOnRoom[_currentRoom] && _kills != _vampires.Length)
             {
                 await Task.Delay(2000);
+                _fill.Animate();
                 await _player.ReturnToPosition();
                 GoToRoom(_currentRoom);
                 _currentRoom++;
@@ -67,6 +73,7 @@ namespace GameEssence
             {
                 Debug.Log("To wait");
                 await Task.Delay(2000);
+                _fill.Animate();
                 Debug.Log("To return");
                 await _player.ReturnToPosition();
                 GoToPuzzle();
@@ -90,6 +97,7 @@ namespace GameEssence
         {
             _toPuzzle.Stop(); 
             _win.Play();
+            _fill.Animate();
         }
 
         public void LoseLevel()

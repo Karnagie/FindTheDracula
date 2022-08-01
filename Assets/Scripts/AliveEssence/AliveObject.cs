@@ -18,6 +18,8 @@ namespace AliveEssence
         [SerializeField] private Animation _run;
 
         [SerializeField] private ParticleSystem[] _onDeath;
+        [SerializeField] private ParticleSystem[] _onDeath1;
+        [SerializeField] private ParticleSystem[] _onDeath2;
         [SerializeField] private GameObject[] _turnOffOnDead;
         [SerializeField] private GameObject[] _turnOnOnDead;
         
@@ -72,9 +74,26 @@ namespace AliveEssence
                     o.SetActive(true);
                 }
                 await Task.Delay((int)(.2 * 1000));
-                foreach (var o in _onDeath)
+                if (number == 0)
                 {
-                    o.Play();
+                    foreach (var o in _onDeath)
+                    {
+                        o.Play();
+                    }
+                }
+                if (number == 1)
+                {
+                    foreach (var o in _onDeath1)
+                    {
+                        o.Play();
+                    }
+                }
+                if (number == 2)
+                {
+                    foreach (var o in _onDeath2)
+                    {
+                        o.Play();
+                    }
                 }
                 OnKill?.Invoke();
             }
