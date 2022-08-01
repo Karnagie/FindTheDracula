@@ -21,6 +21,7 @@ namespace PlayerEssence
         [SerializeField] private Tools _tools;
         [SerializeField] private bool _isWorking;
         [SerializeField] private bool _inverseRotate;
+        [SerializeField] private GameObject _tutorialCanvas;
 
         [Inject] private IInputSystem _input;
         [Inject] private RayCasting _rayCasting;
@@ -47,11 +48,15 @@ namespace PlayerEssence
             _startRotateAngle = transform.eulerAngles.y;
             _deltaAngle = 0;
             _isWorking = true;
+            if(_tutorialCanvas != null)
+                _tutorialCanvas.SetActive(true);
         }
 
         public void ResetStartAngle()
         {
             _startRotateAngle = transform.eulerAngles.y;
+            _deltaAngle = 0;
+            Debug.Log(123);
         }
         
         public void TurnOffUI()
@@ -116,7 +121,7 @@ namespace PlayerEssence
                 float rotVel = RotateAngle() > 0 ? -1 : 1;
                 transform.Rotate(new Vector3(0, rot * rotVel * Time.deltaTime * 20, 0));
                 Vector3 rotation = transform.eulerAngles;
-                if (_input.MouseDelta.x != 0) _mouseDelta = _input.MouseDelta.x;
+                if (_input.MouseDelta.x != 0) _mouseDelta = _input.MouseDelta.x * rot;
                 if (_input.MouseDelta.x <= 0.1f) _mouseDelta = 0;
                 rotation.y += _mouseDelta*Time.deltaTime;
                 // int rotated = 0;

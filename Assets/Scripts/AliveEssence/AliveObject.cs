@@ -14,10 +14,13 @@ namespace AliveEssence
         [SerializeField] protected Transform _heart;
         [SerializeField] private Rigidbody[] _rigidbodies;
         [SerializeField] private bool _loseOnDie;
+        [SerializeField] private AliveObject[] _runOnDeath;
+        [SerializeField] private Animation _run;
 
         [SerializeField] private ParticleSystem[] _onDeath;
         [SerializeField] private GameObject[] _turnOffOnDead;
         [SerializeField] private GameObject[] _turnOnOnDead;
+        
 
         private bool _dead;
 
@@ -35,7 +38,7 @@ namespace AliveEssence
 
         public Action OnKill;
 
-        public async void Die(bool immediately = false)
+        public async void Die(int number, bool immediately = false)
         {
             if(!immediately)await Task.Delay(500);
             
@@ -43,10 +46,15 @@ namespace AliveEssence
             {
                 Debug.Log(animator.name);
                 animator.SetBool("Died", true);
+                animator.SetInteger("Number", number);
                 animator.applyRootMotion = true;
             }
             if(!Dead)
             {
+                foreach (var run in _runOnDeath)
+                {
+                    run.Run();
+                }
                 foreach (var o in _turnOffOnDead)
                 {
                     o.transform.DOScale(o.transform.localScale*0.8f, .1f);
@@ -78,6 +86,15 @@ namespace AliveEssence
             }
             if(_loseOnDie)
                 EventBus.RaiseEvent((IGameStateHandler handler) => handler.LoseLevel());
+        }
+
+        private void Run()
+        {
+            if (_run != null) _run.Play();
+            foreach (var animator in _animators)
+            {
+                animator.SetBool("Run", true);
+            }
         }
     }
 }

@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c88d130dc748fc9b7472445e2ada91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _number: 0
 --- !u!1 &6446994644785682115
 GameObject:
   m_ObjectHideFlags: 0
@@ -5219,7 +5220,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.08
+      scalar: 0.16
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5272,7 +5273,7 @@ ParticleSystem:
     startSizeY:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.08
+      scalar: 0.16
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5325,7 +5326,7 @@ ParticleSystem:
     startSizeZ:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.08
+      scalar: 0.16
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5602,7 +5603,7 @@ ParticleSystem:
     radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: -90, y: 0, z: 0}
+    m_Rotation: {x: -98.16, y: 0, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
@@ -8715,7 +8716,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     minKillSpeed: 0
-    maxKillSpeed: 10000
+    maxKillSpeed: 1
     radiusScale: 1
     collidesWith:
       serializedVersion: 2

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1976345889675124113}
   - component: {fileID: 1973373607294164056}
   - component: {fileID: 1973373607294164067}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: WaterGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 1978099462014769331}
   - component: {fileID: 1952175735720230519}
   - component: {fileID: 1959949335047618407}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SM_Wep_Rifle_Mag_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 1977686171541177913}
   - component: {fileID: 1952177917533309887}
   - component: {fileID: 1959622463555063421}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SM_Wep_Rifle_Trigger_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,6 +269,18 @@ PrefabInstance:
       propertyPath: InitialModule.startSpeed.scalar
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 1572276238502051700, guid: d56dbed630760f44699d3826dec2276a, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973373608658577017, guid: d56dbed630760f44699d3826dec2276a, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415169983963340667, guid: d56dbed630760f44699d3826dec2276a, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7400255476358969379, guid: d56dbed630760f44699d3826dec2276a, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -325,6 +337,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7401869467253275943, guid: d56dbed630760f44699d3826dec2276a, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7401993006702459945, guid: d56dbed630760f44699d3826dec2276a, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7402710200042481659, guid: d56dbed630760f44699d3826dec2276a, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7403173570731230701, guid: d56dbed630760f44699d3826dec2276a, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7403173570731230701, guid: d56dbed630760f44699d3826dec2276a, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -332,6 +360,10 @@ PrefabInstance:
     - target: {fileID: 7403613684299015925, guid: d56dbed630760f44699d3826dec2276a, type: 3}
       propertyPath: m_Name
       value: WaterGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 7403613684299015925, guid: d56dbed630760f44699d3826dec2276a, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d56dbed630760f44699d3826dec2276a, type: 3}
@@ -355,6 +387,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: df8a6350c12eb9c4ca71b3767e6c8642, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Crossbow_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: df8a6350c12eb9c4ca71b3767e6c8642, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: df8a6350c12eb9c4ca71b3767e6c8642, type: 3}
       propertyPath: m_IsActive

@@ -85,7 +85,7 @@ namespace PlayerEssence.WeaponEssence
                     
                     _point = aliveObject.Heart;
                     CreateBullet(aliveObject);
-                    if(_ray)aliveObject.Die();
+                    if(_ray)aliveObject.Die(2);
                     return;
                 }
             }

@@ -16,6 +16,7 @@ namespace PlayerEssence.ToolsEssence
 
         private Transform _defaultParent;
         private Vector3  _vel;
+        private Vector3 _vel1;
         
         public UnityAction<Tool> OnSelected;
         
@@ -54,19 +55,52 @@ namespace PlayerEssence.ToolsEssence
             _view.GetInHand();
         }
 
-        public virtual void Press(Vector3 direction)
+        public virtual void Press(Vector3 vel)
         {
-            _vel.x += _input.MouseDelta.y;
-            _vel.y += _input.MouseDelta.x;
-            _vel = _vel.normalized;
-            
-            _rotator.transform.Rotate(_vel*Time.deltaTime*10);
+            // _vel.x = -vel.y;
+            // _vel.y = vel.x;
+            //
+            // if(_vel1.x - vel.y > 40)
+            // {
+            //     //_vel1.x -= vel.y;
+            //     _vel.x = 0;
+            // } else if(_vel1.x - vel.y < -30)
+            // {
+            //     //_vel1.y -= vel.x;
+            //     _vel.x = 0;
+            // }
+            // else
+            // {
+            //     _vel1.x -= vel.y;
+            // }
+            //
+            // if(_vel1.y - vel.x > 15)
+            // {
+            //     //_vel1.x -= vel.y;
+            //     _vel.y = 0;
+            // }
+            // else if(_vel1.y - vel.x < -15)
+            // {
+            //     //_vel1.y -= vel.x;
+            //     _vel.y = 0;
+            // }
+            // else
+            // {
+            //     _vel1.y -= vel.x;
+            // }
+            // Debug.Log(_vel1);
+            // _rotator.transform.Rotate(_vel*Time.deltaTime*15);
+            // _rotator.transform.rotation = Quaternion.Euler(_rotator.transform.eulerAngles.x, _rotator.transform.eulerAngles.y, 0);
             
             // var currentRotation = _rotator.localRotation;
             // _rotator.LookAt(direction);
             // var rotation = _rotator.localRotation;
             // _rotator.localRotation = Quaternion.Slerp(currentRotation, rotation, Time.deltaTime * 10);
-            
+            var currentRotation = _rotator.localRotation;
+            _rotator.LookAt(vel);
+            var rotation = _rotator.localRotation;
+            _rotator.localRotation = Quaternion.Slerp(currentRotation, rotation, Time.deltaTime * 10);
+
             
             //var rotation = Quaternion.LookRotation (direction+transform.position, Vector3.up);
             // rotation.x = 0; This is for limiting the rotation to the y axis. I needed this for my project so just

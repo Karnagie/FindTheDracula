@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3516771198484321971}
   - component: {fileID: 3516771198484321970}
   - component: {fileID: 3516771198484321969}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 3516771198526505930}
   - component: {fileID: 3516771198526505924}
   - component: {fileID: 3516771198526505931}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 3516771198540700776}
   - component: {fileID: 3516771199494710210}
   - component: {fileID: 3516771199494710206}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Flashlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -382,7 +382,7 @@ GameObject:
   - component: {fileID: 3516771198660935746}
   - component: {fileID: 3516771198660935745}
   - component: {fileID: 3516771198660935741}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

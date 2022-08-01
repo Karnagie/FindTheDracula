@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 697907508743422540}
   - component: {fileID: 705613026673266634}
   - component: {fileID: 715133399584705032}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SM_Wep_Rifle_Trigger_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 697722371223116998}
   - component: {fileID: 705610810439596546}
   - component: {fileID: 715636655210789650}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SM_Wep_Rifle_Mag_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 698115304352602596}
   - component: {fileID: 702426169277323309}
   - component: {fileID: 702426169277323286}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,6 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotator: {fileID: 0}
   _view: {fileID: 702426169277323286}
+  ChangePlace: 0
   _bulletPrefab: {fileID: 5823047068430803365, guid: 265069166b13c3843a80c4d4d64b383d, type: 3}
   _startBulletPosition: {fileID: 702426169909797391}
   _ray: 0
@@ -232,6 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d19d355e720a4dce91b370e704a4cbce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _deactivateInUI: []
   _buttonOnPanel: {fileID: 0}
   _placeOnUI: {fileID: 0}
   _placeDefaultInHand: {fileID: 0}
@@ -249,7 +251,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 702426169909797391}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BulletSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,6 +283,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: df8a6350c12eb9c4ca71b3767e6c8642, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Crossbow_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: df8a6350c12eb9c4ca71b3767e6c8642, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: df8a6350c12eb9c4ca71b3767e6c8642, type: 3}
       propertyPath: m_RootOrder

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3988222409857967438}
   - component: {fileID: 6208251366490094284}
   - component: {fileID: 3751077095135076862}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Garlic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8193514123047470326}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BulletSpawner (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 7288730027073451158}
   - component: {fileID: 8138265926110185031}
   - component: {fileID: 2173530818549396116}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}

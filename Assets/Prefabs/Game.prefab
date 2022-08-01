@@ -3293,7 +3293,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f70fa624a15848f4a971639c009d3b67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _targetsOnRoom: 
   _timeline: {fileID: 6747123566115204741}
+  _rooms: []
   _toPuzzle: {fileID: 6747123565853832723}
   _win: {fileID: 6747123567074715878}
   _losePanel: {fileID: 0}
@@ -3992,8 +3994,8 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 0.76
+  m_Color: {r: 1, g: 0.86939716, b: 0.51320755, a: 1}
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -4032,7 +4034,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1

@@ -858,6 +858,8 @@ MonoBehaviour:
   _heart: {fileID: 6471275214014987257}
   _rigidbodies: []
   _loseOnDie: 1
+  _runOnDeath: []
+  _run: {fileID: 0}
   _onDeath:
   - {fileID: 6471275213187721796}
   - {fileID: 6471275213187734986}

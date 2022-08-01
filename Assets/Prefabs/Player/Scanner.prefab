@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3879575772396411808}
   - component: {fileID: 3257433991078026576}
   - component: {fileID: 4614811407109747324}
-  m_Layer: 10
+  m_Layer: 5
   m_Name: Stencil Mask 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 941236024966133264}
   - component: {fileID: 1273977182093247069}
   - component: {fileID: 746932306}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 6502779542944473588}
   - component: {fileID: 7937293751360313090}
   - component: {fileID: 7937293751360313091}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Scanner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,6 +311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotator: {fileID: 0}
   _view: {fileID: 7937293751360313090}
+  ChangePlace: 0
 --- !u!1 &6930422105318616744
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,7 +323,7 @@ GameObject:
   - component: {fileID: 3154379710896432605}
   - component: {fileID: 7276834110807626376}
   - component: {fileID: 5643911782645862029}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ScanerCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,7 +433,7 @@ GameObject:
   - component: {fileID: 7356006796431145662}
   - component: {fileID: 6221795892522872581}
   - component: {fileID: 2187439387927050039}
-  m_Layer: 10
+  m_Layer: 5
   m_Name: Stencil Mask 1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

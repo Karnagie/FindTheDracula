@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7118644638449813444}
   - component: {fileID: 7118644638449813466}
   - component: {fileID: 7118644638449813445}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7118644638551329133}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 7074763005873355930}
   - component: {fileID: 7118644638612772017}
   - component: {fileID: 7118644638612772028}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
