@@ -22,8 +22,9 @@ namespace AliveEssence
         [SerializeField] private ParticleSystem[] _onDeath2;
         [SerializeField] private GameObject[] _turnOffOnDead;
         [SerializeField] private GameObject[] _turnOnOnDead;
+        [SerializeField] private SkinnedMeshRenderer[] _renderers;
+        [SerializeField] private Texture _scaredSprite;
         
-
         private bool _dead;
 
         private void Awake()
@@ -95,7 +96,7 @@ namespace AliveEssence
                         o.Play();
                     }
                 }
-                OnKill?.Invoke();
+                if(!Dead)OnKill?.Invoke();
             }
             _dead = true;
             foreach (var rigidbody1 in _rigidbodies)
@@ -110,6 +111,11 @@ namespace AliveEssence
         private void Run()
         {
             if (_run != null) _run.Play();
+            foreach (var renderer in _renderers)
+            {
+                renderer.material.mainTexture = _scaredSprite;
+            }
+            
             foreach (var animator in _animators)
             {
                 animator.SetBool("Run", true);

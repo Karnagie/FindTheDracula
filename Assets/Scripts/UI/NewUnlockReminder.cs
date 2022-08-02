@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using Core.SaveAndLoadEssence;
+using DG.Tweening;
 using UnityEngine;
 using Zenject;
 
@@ -13,6 +15,8 @@ namespace UI
         
         private void Awake()
         {
+            transform.DOShakeScale(0.5f, Vector3.one / 2);
+            StartCoroutine(Waiting());
             if (_saveAndLoad.OpenedNewTool == false && _tool)
             {
                 gameObject.SetActive(false);
@@ -20,6 +24,12 @@ namespace UI
             {
                 gameObject.SetActive(false);
             }
+        }
+
+        private IEnumerator Waiting()
+        {
+            yield return new WaitForSeconds(1);
+            transform.DOShakeScale(0.5f,  Vector3.one/2).OnComplete((() => { StartCoroutine(Waiting());}));
         }
 
         public void Hide()

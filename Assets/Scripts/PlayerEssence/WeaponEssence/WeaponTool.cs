@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Threading.Tasks;
 using AliveEssence;
 using Core.InputEssence;
@@ -42,6 +43,17 @@ namespace PlayerEssence.WeaponEssence
                 bullet.MoveTo(mVampire);
         }
 
+        private void Update()
+        {
+            if (_shooting)
+            {
+                Quaternion current = transform.rotation;
+                transform.LookAt(_point);
+                Quaternion target1 = transform.rotation;
+                transform.rotation = Quaternion.Lerp(current, target1, 10f*Time.deltaTime);
+            }
+        }
+
         public IEnumerator Destroying(GameObject bullet)
         {
             _shooting = true;
@@ -52,9 +64,12 @@ namespace PlayerEssence.WeaponEssence
 
         public override void Press(Vector3 direction)
         {
+            Quaternion current = transform.rotation;
             if (_shooting)
             {
                 transform.LookAt(_point);
+                Quaternion target1 = transform.rotation;
+                transform.rotation = Quaternion.Lerp(current, target1, 10f*Time.deltaTime);
                 return;
             }
             var camDirection = Camera.main.ScreenPointToRay(_input.MousePosition);
@@ -64,10 +79,13 @@ namespace PlayerEssence.WeaponEssence
             }
             else
                 transform.LookAt(transform.position+camDirection.direction);
+            Quaternion target = transform.rotation;
+            transform.rotation = Quaternion.Lerp(current, target, 10f*Time.deltaTime);
         }
 
         public override void Click(Vector3 direction)
         {
+            Quaternion current = transform.rotation;
             var camDirection = Camera.main.ScreenPointToRay(_input.MousePosition);
             if (Physics.Raycast(camDirection, out var hit, 100, LayerMask.GetMask("Stuff")))
             {
@@ -75,6 +93,8 @@ namespace PlayerEssence.WeaponEssence
             }
             else
                 transform.LookAt(transform.position+camDirection.direction);
+            Quaternion target = transform.rotation;
+            transform.rotation = Quaternion.Lerp(current, target, 10f*Time.deltaTime);
             
             AliveObject[] aliveObjects = _rayCasting.CastAll<AliveObject>();
             if (aliveObjects.Length >= 1)

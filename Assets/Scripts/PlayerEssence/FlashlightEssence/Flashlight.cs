@@ -32,6 +32,7 @@ namespace PlayerEssence.FlashlightEssence
 
         public override void Press(Vector3 direction)
         {
+            Quaternion current = transform.rotation;
             var camDirection = Camera.main.ScreenPointToRay(_input.MousePosition);
             if (Physics.Raycast(camDirection, out var hit, 100, LayerMask.GetMask("Stuff")))
             {
@@ -39,17 +40,24 @@ namespace PlayerEssence.FlashlightEssence
             }
             else
                 transform.LookAt(transform.position+camDirection.direction);
+            Quaternion target = transform.rotation;
+            transform.rotation = Quaternion.Lerp(current, target, 10f*Time.deltaTime);
         }
 
         public override void Click(Vector3 direction)
         {
+            Quaternion current = transform.rotation;
             var camDirection = Camera.main.ScreenPointToRay(_input.MousePosition);
             if (Physics.Raycast(camDirection, out var hit, 100, LayerMask.GetMask("Stuff")))
             {
                 transform.LookAt(hit.point);
             }
             else
-                transform.LookAt(camDirection.direction*10);
+                transform.LookAt(transform.position+camDirection.direction);
+
+            Quaternion target = transform.rotation;
+            transform.rotation = Quaternion.Lerp(current, target, 10f*Time.deltaTime);
+
         }
     }
 }

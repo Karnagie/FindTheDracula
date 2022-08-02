@@ -62,6 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _number: 1
+  _rotate: 1
 --- !u!1001 &89066941629816834
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -91,19 +92,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c8f379375293ea4a8840b532327dd89, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.68
+      value: -7.9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c8f379375293ea4a8840b532327dd89, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.98
+      value: 4.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c8f379375293ea4a8840b532327dd89, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.5495885
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c8f379375293ea4a8840b532327dd89, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.8354355
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c8f379375293ea4a8840b532327dd89, type: 3}
       propertyPath: m_LocalRotation.y
@@ -115,7 +116,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c8f379375293ea4a8840b532327dd89, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -113.322
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c8f379375293ea4a8840b532327dd89, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -125,6 +126,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: 2c8f379375293ea4a8840b532327dd89, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: 2c8f379375293ea4a8840b532327dd89, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dfed50d28c8b1d34d9a604e2b5032927, type: 2}
     - target: {fileID: 919132149155446097, guid: 2c8f379375293ea4a8840b532327dd89, type: 3}
       propertyPath: m_Name
       value: Garlic

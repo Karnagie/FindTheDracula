@@ -775,6 +775,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 19802394, guid: 932046b7eaf3b554f8d74c81e2f00558, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19802394, guid: 932046b7eaf3b554f8d74c81e2f00558, type: 3}
       propertyPath: EmissionModule.m_BurstCount
       value: 0
       objectReference: {fileID: 0}
@@ -1299,6 +1303,9 @@ MonoBehaviour:
   - {fileID: 4470166692113500926}
   _turnOnOnDead:
   - {fileID: 4551621732689782627}
+  _renderers:
+  - {fileID: 4470166692125067152}
+  _scaredSprite: {fileID: 2800000, guid: 61503836a2550694fb62fb74a2a6f22b, type: 3}
   _burn: {fileID: 1174632616209646611}
 --- !u!4 &4470166692822425909 stripped
 Transform:
@@ -1655,6 +1662,11 @@ GameObject:
 --- !u!95 &4470166692120770902 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6638409154484758659, guid: fad3bc6aa9f63c846ab673ac772633d6, type: 3}
+  m_PrefabInstance: {fileID: 7073295845334438357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &4470166692125067152 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6638409154480444997, guid: fad3bc6aa9f63c846ab673ac772633d6, type: 3}
   m_PrefabInstance: {fileID: 7073295845334438357}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7073295845545925308

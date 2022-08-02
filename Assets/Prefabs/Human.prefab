@@ -1699,6 +1699,9 @@ MonoBehaviour:
   - {fileID: 4511395086144723295}
   _turnOffOnDead: []
   _turnOnOnDead: []
+  _renderers:
+  - {fileID: 427502701806411844}
+  _scaredSprite: {fileID: 2800000, guid: 61503836a2550694fb62fb74a2a6f22b, type: 3}
   _burn: {fileID: 0}
 --- !u!95 &427502700949532652 stripped
 Animator:
@@ -1917,6 +1920,11 @@ PrefabInstance:
 --- !u!4 &427502701801632074 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6638409154477492043, guid: fad3bc6aa9f63c846ab673ac772633d6, type: 3}
+  m_PrefabInstance: {fileID: 6471275214686844417}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &427502701806411844 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6638409154480444997, guid: fad3bc6aa9f63c846ab673ac772633d6, type: 3}
   m_PrefabInstance: {fileID: 6471275214686844417}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &427502701810622082 stripped
