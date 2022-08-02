@@ -5,6 +5,10 @@
         int GetCurrentWeaponId { get;}
         int NextLevel { get;}
         bool Tutorial { get;}
+        bool OpenedNewTool { get;}
+        bool OpenedNewWeapon { get;}
+        void ResetOpenedNewTool();
+        void ResetOpenedWeapon();
         int CurrentLevel { get; }
         int GetCurrentEquipmentId { get; }
         void ChangeCurrentWeapon(int id);

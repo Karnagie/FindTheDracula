@@ -10,6 +10,20 @@ namespace Core.SaveAndLoadEssence
         public int GetCurrentEquipmentId => PlayerPrefs.GetInt("CurrentEquipment", 0);
         public int NextLevel => CalculateNextLevel();
         public bool Tutorial => GetTutorial();
+        
+        public bool OpenedNewTool => PlayerPrefs.GetInt("OpenedNewTool", 0) == 1;
+        
+        public bool OpenedNewWeapon  => PlayerPrefs.GetInt("OpenedNewWeapon", 0) == 1;
+        public void ResetOpenedNewTool()
+        {
+            PlayerPrefs.SetInt("OpenedNewTool", 0);
+        }
+
+        public void ResetOpenedWeapon()
+        {
+            PlayerPrefs.SetInt("OpenedNewWeapon", 0);
+        }
+
         public int CurrentLevel => SceneManager.GetActiveScene().buildIndex;
 
         private bool GetTutorial()
@@ -90,7 +104,7 @@ namespace Core.SaveAndLoadEssence
                 }
 
                 PlayerPrefs.SetInt($"Weapon_{index}", 1);
-                
+                PlayerPrefs.SetInt("OpenedNewWeapon", 1);
                 int r = Random.Range(0, 2);
                 if (free.Count >= 1)
                 {
@@ -113,7 +127,7 @@ namespace Core.SaveAndLoadEssence
         {
             return PlayerPrefs.GetFloat($"Weapon_{_openingId}_opening", 0);
         }
-        
+
         //
         //
         //
@@ -157,7 +171,7 @@ namespace Core.SaveAndLoadEssence
                 }
 
                 PlayerPrefs.SetInt($"Equipment_{index}", 1);
-                
+                PlayerPrefs.SetInt("OpenedNewTool", 1);
                 int r = Random.Range(0, 2);
                 if (free.Count >= 1)
                 {

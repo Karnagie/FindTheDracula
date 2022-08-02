@@ -4,6 +4,7 @@ using AliveEssence;
 using Core.BusEvents;
 using Core.BusEvents.Handlers;
 using PlayerEssence;
+using SnackersUI;
 using UI;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -20,7 +21,7 @@ namespace GameEssence
         [SerializeField] private PlayableDirector _toPuzzle;
         [SerializeField] private PlayableDirector _win;
 
-        [SerializeField] private WinPanel _losePanel;
+        [SerializeField] private TweenAnimatedUIElement _losePanel;
         [SerializeField] private FillImage _fill;
 
         private Vampire[] _vampires;
@@ -102,6 +103,7 @@ namespace GameEssence
 
         public void LoseLevel()
         {
+            VampireKill?.Invoke();
             _player.TurnOffControl();
             _player.TurnOffUI();
             _losePanel.Show();

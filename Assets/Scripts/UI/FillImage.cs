@@ -29,6 +29,9 @@ namespace UI
         [Inject] private ChoosableEquipmentInventory _equipmentInventory;
         [Inject] private ISaveAndLoadSystem _saveAndLoad;
 
+        private Tool _tool;
+        private bool _isWorking;
+
 
         public override void Init()
         {
@@ -41,7 +44,15 @@ namespace UI
             Debug.Log($"start animating");
             try
             {
+                if(_isWorking) return;
+                _isWorking = true;
+                transform.DOKill(true);
                 _percents.gameObject.SetActive(true);
+                if (_tool != null)
+                {
+                    //_tool.gameObject.SetActive(false);
+                    _tool = null;
+                }
                 Debug.Log($"Start animating {_inventory.IsAllFilled()} {_saveAndLoad.GetCurrentEquipmentOpening()}");
                 int w = _saveAndLoad.IsNextWeaponOrQuestion();
                 if ((w == 0 && _saveAndLoad.GetCurrentWeaponOpening() != 0 && _inventory.IsAllFilled() == false)
@@ -62,32 +73,31 @@ namespace UI
                     //         break;
                     // }
                 
-                    transform.DORewind ();
+                    //transform.DOKill(true);
                     transform.localScale = Vector3.zero;
-                    transform.DOScale (new Vector3 (0.013536f, 0.013536f, 0.013536f), .25f);
+                    //0.013536f
                     //_image.DOFade(1, .25f);
                     float fullFill = _image.fillAmount + _fillAmount;
                     await Task.Delay(500);
                     
-                    
+                    transform.DOScale (new Vector3 (1,1,1), .25f);
                         _weapons[_saveAndLoad.GetCurrentWeaponOpening()].gameObject.SetActive(true);
                         while (_image.fillAmount < _saveAndLoad.FillWeaponPercent() )
                         {
                             _image.fillAmount += _fillSpeed * Time.deltaTime;
                             string per = (_image.fillAmount*100).ToString();
-                            if (per.Length > 3)
-                            {
-                                per = per.Remove(3, per.Length-4);
-                            }
-                            _percents.text = per+"%";
+                            int per1 = (int) (_image.fillAmount * 100);
+                            // if (per.Length > 2)
+                            // {
+                            //     per = per.Remove(1, per.Length-2);
+                            // }
+                            _percents.text = per1+"%";
                             _weapons[_saveAndLoad.GetCurrentWeaponOpening()].Fill(_image.fillAmount);
                             await Task.Yield();
                         }
                         _image.fillAmount = _saveAndLoad.FillWeaponPercent();
                         _weapons[_saveAndLoad.GetCurrentWeaponOpening()].Fill(_image.fillAmount);
                         await Task.Delay(1000);
-                        _weapons[_saveAndLoad.GetCurrentWeaponOpening()].gameObject.SetActive(false);
-                        
                         if(_saveAndLoad.FillWeaponPercent() >= 1)
                         {
                             Debug.Log($"create weapon");
@@ -100,15 +110,24 @@ namespace UI
                                 .SetLoops(-1)
                                 .SetEase(Ease.Linear)
                                 .SetRelative();
+                            _tool = tool;
                             foreach (var system in _onGetting)
                             {
                                 system.Play();
                             }
-
+                            _weapons[_saveAndLoad.GetCurrentWeaponOpening()].gameObject.SetActive(false);
+                            transform.DOScale (new Vector3 (0,0,0), .25f).OnComplete((() =>  
+                                tool.gameObject.SetActive(false))).SetDelay(5);
                             await Task.Delay(5000);
                             _image.fillAmount = 0;
                             _percents.text = "";
-                            tool.gameObject.SetActive(false);
+                           // transform.DOScale (new Vector3 (0,0,0), .25f).OnComplete((() =>  
+                           //      tool.gameObject.SetActive(false)));
+                        }
+                        else
+                        {
+                            transform.DOScale (new Vector3 (0,0,0), .25f).OnComplete((() =>  
+                                _weapons[_saveAndLoad.GetCurrentWeaponOpening()].gameObject.SetActive(false)));
                         }
                     
                 }
@@ -127,14 +146,13 @@ namespace UI
                     //         _image.fillAmount = 0;
                     //         break;
                     // }
-                    transform.DORewind ();
+                    //transform.DOKill(true);
                     transform.localScale = Vector3.zero;
-                    transform.DOScale (new Vector3 (0.013536f, 0.013536f, 0.013536f), .25f);
                     //_image.DOFade(1, .25f);
                     float fullFill = _image.fillAmount + _fillAmount;
                     await Task.Delay(500);
                     
-                    
+                    transform.DOScale (new Vector3 (1,1,1), .25f);
                         _tools[_saveAndLoad.GetCurrentEquipmentOpening()].gameObject.SetActive(true);
                         //_tools[_saveAndLoad.GetCurrentEquipmentOpening()].Fill(0);
                     
@@ -142,19 +160,18 @@ namespace UI
                         {
                             _image.fillAmount += _fillSpeed * Time.deltaTime;
                             string per = (_image.fillAmount*100).ToString();
-                            if (per.Length > 3)
-                            {
-                                per = per.Remove(3, per.Length-4);
-                            }
-                            _percents.text = per+"%";
+                            int per1 = (int) (_image.fillAmount * 100);
+                            // if (per.Length > 2)
+                            // {
+                            //     per = per.Remove(1, per.Length-2);
+                            // }
+                            _percents.text = per1+"%";
                             _tools[_saveAndLoad.GetCurrentEquipmentOpening()].Fill(_image.fillAmount);
                             await Task.Yield();
                         }
                         _image.fillAmount = _saveAndLoad.FillEquipmentPercent();
                         _tools[_saveAndLoad.GetCurrentEquipmentOpening()].Fill(_image.fillAmount);
                         await Task.Delay(1000);
-                        _tools[_saveAndLoad.GetCurrentEquipmentOpening()].gameObject.SetActive(false);
-                    
                         if(_saveAndLoad.FillEquipmentPercent() >= 1)
                         {
                             Debug.Log($"create Equipment");
@@ -167,18 +184,31 @@ namespace UI
                                 .SetLoops(-1)
                                 .SetEase(Ease.Linear)
                                 .SetRelative();
+                            _tool = tool;
                             foreach (var system in _onGetting)
                             {
                                 system.Play();
                             }
-                            
+                            _tools[_saveAndLoad.GetCurrentEquipmentOpening()].gameObject.SetActive(false);
+                            transform.DOScale (new Vector3 (0,0,0), .25f).OnComplete((() =>
+                            {
+                                tool.gameObject.SetActive(false);
+                            })).SetDelay(5);;
                             await Task.Delay(5000);
                             _image.fillAmount = 0;
                             _percents.text = "";
-                            tool.gameObject.SetActive(false);
+                        }
+                        else
+                        {
+                           transform.DOScale (new Vector3 (0,0,0), .25f).OnComplete((() =>
+                            {
+                                _tools[_saveAndLoad.GetCurrentEquipmentOpening()].gameObject.SetActive(false);
+                            }));
                         }
                 }
-                _percents.gameObject.SetActive(false);
+
+                _isWorking = false;
+                //_percents.gameObject.SetActive(false);
             }
             catch (Exception e)
             {

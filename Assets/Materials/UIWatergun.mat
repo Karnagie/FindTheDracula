@@ -94,14 +94,14 @@ Material:
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _FillAmount: 1
-    - _FillProgress: 0.399
+    - _FillProgress: 0.31
     - _Float: 0.5
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _Offset: -0.29
+    - _Offset: -0.14
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
